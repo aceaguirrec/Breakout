@@ -1,66 +1,65 @@
 #pragma once
-
 #ifndef _MATRIX4_H_
 #define _MATRIX4_H_
 #include <vector>
+#include <iostream>
 
 namespace engine
 {
 	namespace math
 	{
-	
-		struct Matrix4
+
+		struct matrix4
 		{
 			/* ==========================
 			* STATIC
 			* ==========================*/
-			static Matrix4 Origin;
+			static matrix4 Origin;
 
 			/* ==========================
 			* CONSTRUCTORS
 			* ==========================*/
-			Matrix4();
-			Matrix4(float, float, float, float,
-					float, float, float, float, 
-					float, float, float, float, 
-					float, float, float, float );
-			Matrix4(std::vector<float>);
-			
+			matrix4();
+			matrix4(float, float, float, float,
+				float, float, float, float,
+				float, float, float, float,
+				float, float, float, float);
+			matrix4(std::vector<float>);
+
 
 			/* ==========================
 			* PUBLIC FUNCTIONS
 			* ==========================*/
 			void	 identity(void);
 			int *	 get_values(void);
-			Matrix4	 get_transpose(void);
+			matrix4	 get_transpose(void);
 			float	 get_individual_element(int, int);
 			int *	 get_angles(void);
-			void	 translate_matrix(void);
-			void	 rotate_matrix(float , float);
-			void	 rotate_on_x(float);
-			void	 rotate_on_y(float);
-			void	 rotate_on_z(float);
-			void	 invert_matrix(void);
-			void	 transform(void);
+			matrix4	 translate_matrix(void);
+			bool invert_matrix(const double member[16], double indexOut[16]);
+			void	 rotate_matrix(float, float);
+			matrix4	 rotate_on_x(float);
+			matrix4	 rotate_on_y(float);
+			matrix4	 rotate_on_z(float);
+			void print_the_matrix(std::ostream &, const matrix4 &);
 
 			/* ==========================
 			* OPERATORS
 			* ==========================*/
 
-			Matrix4& operator= (const Matrix4&);
-			Matrix4& operator+=(const Matrix4&);
-			Matrix4& operator-=(const Matrix4&);
-			Matrix4& operator*=(const Matrix4&);
-			Matrix4& operator/=(const Matrix4&);
-			Matrix4  operator+(const Matrix4&) const;
-			Matrix4  operator-(const Matrix4&) const;
-			Matrix4  operator*(const Matrix4&) const;
-			Matrix4  operator/(const Matrix4&) const;
+			matrix4& operator= (const matrix4&);
+			matrix4& operator+=(const matrix4&);
+			matrix4& operator-=(const matrix4&);
+			matrix4& operator*=(const matrix4&);
+			matrix4  operator+(const matrix4&) const;
+			matrix4  operator-(const matrix4&) const;
+			matrix4  operator*(const matrix4&) const;
+
 
 			/* ==========================
 			* MEMBERS
 			* ==========================*/
-		private:
+			//private:
 			float mValues[4][4];
 		};
 	}
