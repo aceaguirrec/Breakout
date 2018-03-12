@@ -23,17 +23,17 @@ namespace Engine
 					float, float, float, float, 
 					float, float, float, float, 
 					float, float, float, float );
-			Matrix4(float[]);
+			Matrix4(std::vector<float>);
 			
 
 			/* ==========================
 			* PUBLIC FUNCTIONS
 			* ==========================*/
-			float	 identity(void);
-			float*	 get_values(void);
-			float	 get_transpose(void);
-			float&	 get_individual_element(void);
-			float	 get_angles(void);
+			void	 identity(void);
+			int *	 get_values(void);
+			Matrix4	 get_transpose(void);
+			float	 get_individual_element(int, int);
+			int *	 get_angles(void);
 			void	 translate_matrix(void);
 			void	 rotate_matrix(float , float);
 			void	 rotate_on_x(float);
