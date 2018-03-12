@@ -3,9 +3,9 @@
 #ifndef _VECTOR3_H_
 #define _VECTOR3_H_
 
-namespace Engine
+namespace engine
 {
-	namespace Math
+	namespace math
 	{
 		struct Vector2;
 		struct Vector3
@@ -26,24 +26,24 @@ namespace Engine
 			/* ==========================
 			* PUBLIC FUNCTIONS
 			* ==========================*/
-			float   Length() const;
-			float   SquaredLength() const;
-			float	Normalize();
+			float   vectorLength() const;
+			float   squaredLength() const;
+			float	normalize();
 
 			/* ==========================
 			* OPERATORS
 			* ==========================*/
-			Vector3& operator= (const Vector3&);
-			Vector3& operator+=(const Vector3&);
-			Vector3& operator-=(const Vector3&);
-			Vector3& operator*=(const Vector3&);
-			Vector3& operator/=(const Vector3&);
-			Vector3  operator+(const Vector3&) const;
-			Vector3  operator-(const Vector3&) const;
-			Vector3  operator*(const Vector3&) const;
-			Vector3  operator/(const Vector3&) const;
-			bool     operator==(const Vector3&) const;
-			bool     operator!=(const Vector3&) const;
+			Vector3&	   operator= (const Vector3&);
+			Vector3&	   operator+=(const Vector3&);
+			Vector3&	   operator-=(const Vector3&);
+			Vector3&	   operator*=(const Vector3&);
+			Vector3&	   operator/=(const Vector3&);
+			Vector3		   operator+(const Vector3&) const;
+			Vector3		   operator-(const Vector3&) const;
+			Vector3		   operator*(const Vector3&) const;
+			Vector3		   operator/(const Vector3&) const;
+			bool		   operator==(const Vector3&) const;
+			bool		   operator!=(const Vector3&) const;
 			friend Vector3 operator*(float, const Vector3&);
 			friend Vector3 operator*(const Vector3&, float);
 
