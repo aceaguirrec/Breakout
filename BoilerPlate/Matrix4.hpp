@@ -1,11 +1,12 @@
 #pragma once
+
 #ifndef _MATRIX4_H_
 #define _MATRIX4_H_
 #include <vector>
 
-namespace Engine
+namespace engine
 {
-	namespace Math
+	namespace math
 	{
 	
 		struct Matrix4
