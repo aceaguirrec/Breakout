@@ -7,13 +7,13 @@ namespace Engine
 	namespace Math
 	{
 		
-		struct MathUtilities
+		struct math_utilities
 		{
 			/* ==========================
 			* CONSTRUCTORS
 			* ==========================*/
 			
-			MathUtilities();
+			math_utilities();
 
 			/* ==========================
 			* PUBLIC FUNCTIONS
@@ -32,7 +32,7 @@ namespace Engine
 			  MEMBERS
 			  ==========================*/
 
-			static float PI;
+			static float mPi;
 
 			/* ==========================
 			* TEMPLATES
