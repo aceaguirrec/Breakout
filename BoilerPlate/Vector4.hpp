@@ -2,9 +2,9 @@
 #ifndef _VECTOR4_H_
 #define _VECTOR4_H_
 
-namespace Engine
+namespace engine
 {
-	namespace Math
+	namespace math
 	{
 		struct Vector2;
 		struct Vector3;
@@ -27,9 +27,9 @@ namespace Engine
 			/* ==========================
 			* PUBLIC FUNCTIONS
 			* ==========================*/
-			float   Length() const;
-			float   SquaredLength() const;
-			float	Normalize();
+			float   vectorLength() const;
+			float   squaredLength() const;
+			float	normalize();
 
 			/* ==========================
 			* OPERATORS

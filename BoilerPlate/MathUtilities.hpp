@@ -32,7 +32,7 @@ namespace engine
 			  MEMBERS
 			  ==========================*/
 
-			static float PI;
+			static float mPi;
 
 			/* ==========================
 			* TEMPLATES
