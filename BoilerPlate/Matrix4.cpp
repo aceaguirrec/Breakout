@@ -12,84 +12,109 @@ namespace Engine
 						 float member2, float member6, float member10, float member14,
 						 float member3, float member7, float member11, float member15)
 		{
-			// line = i columns = j
-			mValues[0][0] = member0;
-			mValues[1][0] = member1;
-			mValues[2][0] = member2;
-			mValues[3][0] = member3;
-			mValues[0][1] = member4;
-			mValues[1][1] = member5;
-			mValues[2][1] = member6;
-			mValues[3][1] = member7;
-			mValues[0][2] = member8;
-			mValues[1][2] = member9;
-			mValues[2][2] = member10;
-			mValues[3][2] = member11;
-			mValues[0][3] = member12;
-			mValues[1][3] = member13;
-			mValues[2][3] = member14;
-			mValues[3][3] = member15;
+			mValues[0]  = member0;
+			mValues[1]  = member1;
+			mValues[2]  = member2;
+			mValues[3]  = member3;
+			mValues[4]  = member4;
+			mValues[5]  = member5;
+			mValues[6]  = member6;
+			mValues[7]  = member7;
+			mValues[8]  = member8;
+			mValues[9]  = member9;
+			mValues[10] = member10;
+			mValues[11] = member11;
+			mValues[12] = member12;
+			mValues[13] = member13;
+			mValues[14] = member14;
+			mValues[15] = member15;
 		}
-		matrix4::matrix4(std::vector<float> array) { // use pointers
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					//mValues[j][i] = array[j][i];
-				}
-			}
+		matrix4::matrix4(std::vector<float> array) { 
+			mValues[0] = array[0];
+			mValues[1] = array[1];
+			mValues[2] = array[2];
+			mValues[3] = array[3];
+			mValues[4] = array[4];
+			mValues[5] = array[5];
+			mValues[6] = array[6];
+			mValues[7] = array[7];
+			mValues[8] = array[8];
+			mValues[9] = array[9];
+			mValues[10] = array[10];
+			mValues[11] = array[11];
+			mValues[12] = array[12];
+			mValues[13] = array[13];
+			mValues[14] = array[14];
+			mValues[15] = array[15];
 		}
 		void matrix4::identity() {
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					if (i == j) mValues[j][i] = 1;
-					else mValues[j][i] = 0;
-				}
-			}
+			mValues[0] = 1;
+			mValues[1] = 0;
+			mValues[2] = 0;
+			mValues[3] = 0;
+			mValues[5] = 1;
+			mValues[6] = 0;
+			mValues[7] = 0;
+			mValues[8] = 0;
+			mValues[9] = 0;
+			mValues[10] = 1;
+			mValues[11] = 0;
+			mValues[12] = 0;
+			mValues[13] = 0;
+			mValues[14] = 0;
+			mValues[15] = 1;
 		}
 		int* matrix4::get_values() {
 			static int pointerToValues[15];
-			int counter = 0;
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					pointerToValues[counter] = mValues[j][i];
-					counter++;
-				}
+			for (int i = 0; i < 15; i++) {
+					pointerToValues[i] = mValues[i];
 			}
 			return pointerToValues;
 		}
 		matrix4 matrix4::get_transpose() {
 			matrix4 newMatrix4 = matrix4();
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					newMatrix4.mValues[i][j] = mValues[j][i];
-				}
-			}
+			mValues[0] = 1;
+			mValues[1] = 0;
+			mValues[2] = 0;
+			mValues[3] = 0;
+			mValues[5] = 1;
+			mValues[6] = 0;
+			mValues[7] = 0;
+			mValues[8] = 0;
+			mValues[9] = 0;
+			mValues[10] = 1;
+			mValues[11] = 0;
+			mValues[12] = 0;
+			mValues[13] = 0;
+			mValues[14] = 0;
+			mValues[15] = 1;
 			return newMatrix4;
 		}
-		float matrix4::get_individual_element(int indexLine, int indexColumn) {
-			return mValues[indexLine][indexColumn];
+		float matrix4::get_individual_element(int indexLine) {
+			return mValues[indexLine];
 		}
 		int * matrix4::get_angles(){
 			float yaw, pitch, roll;
 			static int angles[3];
-			if ( mValues[0][0] == 1.0f)
+			if ( mValues[0] == 1.0f)
 			{
-				yaw = atan2f(mValues[1][3], mValues[3][4]);
+				yaw = atan2f(mValues[8], mValues[14]);
 				pitch = 0;
 				roll = 0;
 
 			}
-			else if (mValues[0][0] == -1.0f)
+			else if (mValues[0] == -1.0f)
 			{
-				yaw = atan2f(mValues[1][3], mValues[3][4]);
+				yaw = atan2f(mValues[8], mValues[14]);
 				pitch = 0;
 				roll = 0;
 			}
 			else
 			{
 
-				yaw = atan2(-mValues[3][1], mValues[1][1]);
-				pitch = asin(mValues[2][1]);
-				roll = atan2(-mValues[2][3], mValues[2][2]);
+				yaw = atan2(-mValues[2], mValues[0]);
+				pitch = asin(mValues[1]);
+				roll = atan2(-mValues[9], mValues[5]);
 			}
 			angles[0] = roll;
 			angles[1] = yaw;

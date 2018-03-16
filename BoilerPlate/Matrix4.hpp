@@ -33,7 +33,7 @@ namespace Engine
 			void	 identity(void);
 			int *	 get_values(void);
 			matrix4	 get_transpose(void);
-			float	 get_individual_element(int, int);
+			float	 get_individual_element(int);
 			int *	 get_angles(void);
 			matrix4	 translate_matrix(void);
 			bool invert_matrix(const double member[16], double indexOut[16]);
@@ -59,8 +59,9 @@ namespace Engine
 			/* ==========================
 			* MEMBERS
 			* ==========================*/
-		//private:
-			float mValues[4][4];
+		private:
+			float mValues[15];
+			
 		};
 	}
 }
