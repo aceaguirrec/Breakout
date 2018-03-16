@@ -8,7 +8,11 @@ namespace Engine
 {
 	namespace math
 	{
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 		struct matrix4
 		{
 			/* ==========================
@@ -21,11 +25,19 @@ namespace Engine
 			* ==========================*/
 			matrix4();
 			matrix4(float, float, float, float,
+<<<<<<< HEAD
 				float, float, float, float,
 				float, float, float, float,
 				float, float, float, float);
 			matrix4(std::vector<float>);
 
+=======
+					float, float, float, float, 
+					float, float, float, float, 
+					float, float, float, float );
+			matrix4(std::vector<float>);
+			
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 
 			/* ==========================
 			* PUBLIC FUNCTIONS
@@ -33,6 +45,7 @@ namespace Engine
 			void	 identity(void);
 			int *	 get_values(void);
 			matrix4	 get_transpose(void);
+<<<<<<< HEAD
 			float	 get_individual_element(int, int);
 			int *	 get_angles(void);
 			matrix4	 translate_matrix(void);
@@ -42,6 +55,17 @@ namespace Engine
 			matrix4	 rotate_on_y(float);
 			matrix4	 rotate_on_z(float);
 			void print_the_matrix(std::ostream &, const matrix4 &);
+=======
+			float	 get_individual_element(int);
+			int *	 get_angles(void);
+			matrix4	 translate_matrix(void);
+			bool invert_matrix(const double member[16], double indexOut[16]);
+			void	 rotate_matrix(float , float);
+			matrix4	 rotate_on_x(float);
+			matrix4	 rotate_on_y(float);
+			matrix4	 rotate_on_z(float);
+			void print_the_matrix(std::ostream &, const matrix4 & );
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 
 			/* ==========================
 			* OPERATORS
@@ -54,13 +78,23 @@ namespace Engine
 			matrix4  operator+(const matrix4&) const;
 			matrix4  operator-(const matrix4&) const;
 			matrix4  operator*(const matrix4&) const;
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 
 			/* ==========================
 			* MEMBERS
 			* ==========================*/
+<<<<<<< HEAD
 			//private:
 			float mValues[4][4];
+=======
+		private:
+			float mValues[15];
+			
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 		};
 	}
 }

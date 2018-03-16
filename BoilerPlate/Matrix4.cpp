@@ -6,6 +6,7 @@ namespace Engine
 	{
 		matrix4::matrix4() {
 		}
+<<<<<<< HEAD
 
 		matrix4::matrix4(float member0, float member4, float member8, float member12,
 			float member1, float member5, float member9, float member13,
@@ -44,20 +45,76 @@ namespace Engine
 					else mValues[j][i] = 0;
 				}
 			}
+=======
+		
+		matrix4::matrix4(float member0, float member4, float member8,  float member12,
+						 float member1, float member5, float member9,  float member13,
+						 float member2, float member6, float member10, float member14,
+						 float member3, float member7, float member11, float member15)
+		{
+			mValues[0]  = member0;
+			mValues[1]  = member1;
+			mValues[2]  = member2;
+			mValues[3]  = member3;
+			mValues[4]  = member4;
+			mValues[5]  = member5;
+			mValues[6]  = member6;
+			mValues[7]  = member7;
+			mValues[8]  = member8;
+			mValues[9]  = member9;
+			mValues[10] = member10;
+			mValues[11] = member11;
+			mValues[12] = member12;
+			mValues[13] = member13;
+			mValues[14] = member14;
+			mValues[15] = member15;
+		}
+		matrix4::matrix4(std::vector<float> array) { 
+			mValues[0] = array[0];
+			mValues[1] = array[1];
+			mValues[2] = array[2];
+			mValues[3] = array[3];
+			mValues[4] = array[4];
+			mValues[5] = array[5];
+			mValues[6] = array[6];
+			mValues[7] = array[7];
+			mValues[8] = array[8];
+			mValues[9] = array[9];
+			mValues[10] = array[10];
+			mValues[11] = array[11];
+			mValues[12] = array[12];
+			mValues[13] = array[13];
+			mValues[14] = array[14];
+			mValues[15] = array[15];
+		}
+		void matrix4::identity() {
+			mValues[0] = 1;
+			mValues[1] = 0;
+			mValues[2] = 0;
+			mValues[3] = 0;
+			mValues[5] = 1;
+			mValues[6] = 0;
+			mValues[7] = 0;
+			mValues[8] = 0;
+			mValues[9] = 0;
+			mValues[10] = 1;
+			mValues[11] = 0;
+			mValues[12] = 0;
+			mValues[13] = 0;
+			mValues[14] = 0;
+			mValues[15] = 1;
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 		}
 		int* matrix4::get_values() {
 			static int pointerToValues[15];
-			int counter = 0;
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					pointerToValues[counter] = mValues[j][i];
-					counter++;
-				}
+			for (int i = 0; i < 15; i++) {
+					pointerToValues[i] = mValues[i];
 			}
 			return pointerToValues;
 		}
 		matrix4 matrix4::get_transpose() {
 			matrix4 newMatrix4 = matrix4();
+<<<<<<< HEAD
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; i++) {
 					newMatrix4.mValues[i][j] = mValues[j][i];
@@ -72,24 +129,50 @@ namespace Engine
 			float yaw, pitch, roll;
 			static int angles[3];
 			if (mValues[0][0] == 1.0f)
+=======
+			mValues[0] = 1;
+			mValues[1] = 0;
+			mValues[2] = 0;
+			mValues[3] = 0;
+			mValues[5] = 1;
+			mValues[6] = 0;
+			mValues[7] = 0;
+			mValues[8] = 0;
+			mValues[9] = 0;
+			mValues[10] = 1;
+			mValues[11] = 0;
+			mValues[12] = 0;
+			mValues[13] = 0;
+			mValues[14] = 0;
+			mValues[15] = 1;
+			return newMatrix4;
+		}
+		float matrix4::get_individual_element(int indexLine) {
+			return mValues[indexLine];
+		}
+		int * matrix4::get_angles(){
+			float yaw, pitch, roll;
+			static int angles[3];
+			if ( mValues[0] == 1.0f)
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 			{
-				yaw = atan2f(mValues[1][3], mValues[3][4]);
+				yaw = atan2f(mValues[8], mValues[14]);
 				pitch = 0;
 				roll = 0;
 
 			}
-			else if (mValues[0][0] == -1.0f)
+			else if (mValues[0] == -1.0f)
 			{
-				yaw = atan2f(mValues[1][3], mValues[3][4]);
+				yaw = atan2f(mValues[8], mValues[14]);
 				pitch = 0;
 				roll = 0;
 			}
 			else
 			{
 
-				yaw = atan2(-mValues[3][1], mValues[1][1]);
-				pitch = asin(mValues[2][1]);
-				roll = atan2(-mValues[2][3], mValues[2][2]);
+				yaw = atan2(-mValues[2], mValues[0]);
+				pitch = asin(mValues[1]);
+				roll = atan2(-mValues[9], mValues[5]);
 			}
 			angles[0] = roll;
 			angles[1] = yaw;
@@ -137,7 +220,11 @@ namespace Engine
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; i++) {
 					for (int k = 0; k < 3; k++) mValues[j][i] +=
+<<<<<<< HEAD
 						mValues[j][i + k] * right_hand_side.mValues[j][i + k];
+=======
+						 mValues[j][i + k] * right_hand_side.mValues[j][i + k];
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 				}
 			}
 			return *this;
@@ -169,8 +256,13 @@ namespace Engine
 			matrix4 newMatrix4 = matrix4();
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; i++) {
+<<<<<<< HEAD
 					for (int k = 0; k < 3; k++) newMatrix4.mValues[j][i]
 						+= mValues[j][i + k] * right_hand_side.mValues[j][i + k];
+=======
+						for (int k = 0; k < 3; k++) newMatrix4.mValues[j][i] 
+							+=  mValues[j][i+k] * right_hand_side.mValues[j][i+k];
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 				}
 			}
 			return newMatrix4;
@@ -222,12 +314,21 @@ namespace Engine
 			else if (axis == 2) {
 				rotate_on_z(angle);
 			}
+<<<<<<< HEAD
 		}
 		matrix4 matrix4::translate_matrix() {
 			matrix4 newMatrix = matrix4();
 
 			return newMatrix;
 		}
+=======
+		}
+		matrix4 matrix4::translate_matrix(){
+			matrix4 newMatrix = matrix4();
+			
+			return newMatrix;
+		}
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 		bool matrix4::invert_matrix(const double member[16], double indexOut[16])
 		{
 			double index[16], determinate;
@@ -239,6 +340,7 @@ namespace Engine
 				member[9] * member[7] * member[14] +
 				member[13] * member[6] * member[11] -
 				member[13] * member[7] * member[10];
+<<<<<<< HEAD
 
 			index[4] = -member[4] * member[10] * member[15] +
 				member[4] * member[11] * member[14] +
@@ -289,6 +391,58 @@ namespace Engine
 				member[12] * member[1] * member[10] -
 				member[12] * member[2] * member[9];
 
+=======
+
+			index[4] = -member[4] * member[10] * member[15] +
+				member[4] * member[11] * member[14] +
+				member[8] * member[6] * member[15] -
+				member[8] * member[7] * member[14] -
+				member[12] * member[6] * member[11] +
+				member[12] * member[7] * member[10];
+
+			index[8] = member[4] * member[9] * member[15] -
+				member[4] * member[11] * member[13] -
+				member[8] * member[5] * member[15] +
+				member[8] * member[7] * member[13] +
+				member[12] * member[5] * member[11] -
+				member[12] * member[7] * member[9];
+
+			index[12] = -member[4] * member[9] * member[14] +
+				member[4] * member[10] * member[13] +
+				member[8] * member[5] * member[14] -
+				member[8] * member[6] * member[13] -
+				member[12] * member[5] * member[10] +
+				member[12] * member[6] * member[9];
+
+			index[1] = -member[1] * member[10] * member[15] +
+				member[1] * member[11] * member[14] +
+				member[9] * member[2] * member[15] -
+				member[9] * member[3] * member[14] -
+				member[13] * member[2] * member[11] +
+				member[13] * member[3] * member[10];
+
+			index[5] = member[0] * member[10] * member[15] -
+				member[0] * member[11] * member[14] -
+				member[8] * member[2] * member[15] +
+				member[8] * member[3] * member[14] +
+				member[12] * member[2] * member[11] -
+				member[12] * member[3] * member[10];
+
+			index[9] = -member[0] * member[9] * member[15] +
+				member[0] * member[11] * member[13] +
+				member[8] * member[1] * member[15] -
+				member[8] * member[3] * member[13] -
+				member[12] * member[1] * member[11] +
+				member[12] * member[3] * member[9];
+
+			index[13] = member[0] * member[9] * member[14] -
+				member[0] * member[10] * member[13] -
+				member[8] * member[1] * member[14] +
+				member[8] * member[2] * member[13] +
+				member[12] * member[1] * member[10] -
+				member[12] * member[2] * member[9];
+
+>>>>>>> 9914f330f358c03f2225848152920c9a73440643
 			index[2] = member[1] * member[6] * member[15] -
 				member[1] * member[7] * member[14] -
 				member[5] * member[2] * member[15] +

@@ -10,6 +10,13 @@
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
 
+// TODO : MOVE THIS OUT
+#include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <sstream>
 
 
 namespace Engine
@@ -17,10 +24,14 @@ namespace Engine
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
 
+
 	GLuint VertexArrayObject;	// VAO
 	GLuint VertexBufferObject;	// VBO
 	GLint UniformColorLocation;
 	GLuint ProgramID;
+	GLuint VertexArrayObject;						// VAO
+	GLuint VertexBufferObject;						// VBO
+	GLuint ProgramID;								// shader compilation value
 
 
 	GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_path) {
@@ -130,7 +141,11 @@ namespace Engine
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 	}
 
+
 	App::~App(){
+
+	App::~App()
+	{
 
 		glDeleteBuffers(1, &VertexBufferObject);
 		glDeleteVertexArrays(1, &VertexArrayObject);
@@ -149,9 +164,16 @@ namespace Engine
 
 		m_state = GameState::RUNNING;
 
+
 		//TODO Move this out!
 		ProgramID = LoadShaders("vertex.glsl", "frag.glsl");
 		GLint uniColor = glGetUniformLocation();
+
+		// TODO: RR: MOVE THIS OUT!!
+
+		ProgramID = LoadShaders("vertex.glsl", "frag.glsl");
+
+
 
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
@@ -171,9 +193,19 @@ namespace Engine
 			-0.5f,  0.5f, 0.0f  // top left
 		};
 
+
 		glGenVertexArrays(1, &VertexArrayObject);
 		glGenBuffers(1, &VertexBufferObject);
 		// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+
+		glGenVertexArrays(1, &VertexArrayObject); //generating vao
+		glGenBuffers(1, &VertexBufferObject); // generating vbo
+
+		// bind the Vertex Array Object first, 
+		//then bind and set vertex buffer(s), 
+		//and then configure vertex attributes(s).
+
+
 		glBindVertexArray(VertexArrayObject);
 
 		glBindBuffer(GL_ARRAY_BUFFER, VertexBufferObject);
@@ -197,8 +229,13 @@ namespace Engine
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
 
+
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
 
 		SDL_Event event;
 		while (m_state == GameState::RUNNING)
@@ -229,7 +266,7 @@ namespace Engine
 
 		// Setup the viewport
 		//
-		SetupViewport();
+		//SetupViewport();
 
 		// Change game state
 		//
@@ -293,6 +330,12 @@ namespace Engine
 		glBindVertexArray(VertexArrayObject);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 
+		//use your shader
+		glUseProgram(ProgramID);
+		glBindVertexArray(VertexArrayObject);
+		glDrawArrays(GL_TRIANGLES,0,6);
+
+
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
 
@@ -305,6 +348,12 @@ namespace Engine
 			std::cerr << "Failed to init SDL" << std::endl;
 			return false;
 		}
+		// this means that the old deprecated code are disabled
+		//	
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,SDL_GL_CONTEXT_PROFILE_CORE);
+
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,2);
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
@@ -370,7 +419,10 @@ namespace Engine
 
 	bool App::GlewInit()
 	{
+
 		glewExperimental = GL_TRUE;		//makes available all core API features
+		glewExperimental = GL_TRUE;
+
 		GLenum err = glewInit();
 		if (GLEW_OK != err)
 		{
