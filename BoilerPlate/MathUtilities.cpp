@@ -38,7 +38,7 @@ namespace Engine
 			radianB -= radianA;
 			return radianB;
 		}
-		float math_utilities::Angular_distance(float angleA, float angleB) {
+		float math_utilities::angular_distance(float angleA, float angleB) {
 			angleB -= angleA;
 			return angleB;
 		}

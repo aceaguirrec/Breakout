@@ -1,6 +1,6 @@
 #include "Matrix4.hpp"
 
-namespace engine
+namespace Engine
 {
 	namespace math
 	{

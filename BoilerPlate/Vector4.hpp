@@ -2,9 +2,9 @@
 #ifndef _VECTOR4_H_
 #define _VECTOR4_H_
 
-namespace engine
+namespace Engine
 {
-	namespace math
+	namespace Math
 	{
 		struct Vector2;
 		struct Vector3;

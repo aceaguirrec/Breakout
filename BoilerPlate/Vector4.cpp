@@ -1,11 +1,11 @@
 #include "Vector3.hpp"
 #include "Vector2.hpp"
 #include "Vector4.hpp"
-#include <cmath>
+#include <cMath>
 
-namespace engine
+namespace Engine
 {
-	namespace math
+	namespace Math
 	{
 		Vector4 Vector4::Origin = Vector4();
 

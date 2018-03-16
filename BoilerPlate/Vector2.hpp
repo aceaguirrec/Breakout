@@ -3,9 +3,9 @@
 #ifndef _VECTOR2_H_
 #define _VECTOR2_H_
 
-namespace engine
+namespace Engine
 {
-	namespace math
+	namespace Math
 	{
 		struct Vector2
 		{

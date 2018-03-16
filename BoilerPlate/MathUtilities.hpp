@@ -1,10 +1,10 @@
 #pragma once
-#ifndef _MATHUTILITIES_H_
-#define _MATHUTILITIES_H_
+#ifndef _MathUTILITIES_H_
+#define _MathUTILITIES_H_
 
-namespace engine
+namespace Engine
 {
-	namespace math
+	namespace Math
 	{
 		
 		struct math_utilities
@@ -119,4 +119,4 @@ namespace engine
 		};
 	}
 }
-#endif // !_MATHUTILITIES_H_
+#endif // !_MathUTILITIES_H_

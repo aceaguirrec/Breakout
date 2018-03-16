@@ -1,9 +1,9 @@
 #include "Vector2.hpp"
 #include "Vector3.hpp"
-#include <cmath>
-namespace engine {
+#include <cMath>
+namespace Engine {
 
-	namespace math {
+	namespace Math {
 
 		Vector3 Vector3::Origin = Vector3();
 
