@@ -73,21 +73,17 @@ namespace Engine
 		}
 		matrix4 matrix4::get_transpose() {
 			matrix4 newMatrix4 = matrix4();
-			mValues[0] = 1;
-			mValues[1] = 0;
-			mValues[2] = 0;
-			mValues[3] = 0;
-			mValues[5] = 1;
-			mValues[6] = 0;
-			mValues[7] = 0;
-			mValues[8] = 0;
-			mValues[9] = 0;
-			mValues[10] = 1;
-			mValues[11] = 0;
-			mValues[12] = 0;
-			mValues[13] = 0;
-			mValues[14] = 0;
-			mValues[15] = 1;
+			newMatrix4[1] = mValues[4];
+			newMatrix4[2] = mValues[8];
+			newMatrix4[3] = mValues[12];
+			newMatrix4[6] = mValues[9];
+			newMatrix4[7] = mValues[13];
+			newMatrix4[8] = mValues[2];
+			newMatrix4[9] = mValues[6];
+			newMatrix4[11] = mValues[14];
+			newMatrix4[12] = mValues[3];
+			newMatrix4[13] = mValues[7];
+			newMatrix4[14] = mValues[11];
 			return newMatrix4;
 		}
 		float matrix4::get_individual_element(int indexLine) {
@@ -123,264 +119,342 @@ namespace Engine
 		}
 		//operators
 
-		matrix4& matrix4::operator=(const matrix4& right_hand_side)
+		matrix4& matrix4::operator=(matrix4& right_hand_side)
 		{
-			// Prevent self assignment
+			// prevent self assignment
 			if (this == &right_hand_side) return *this;
 
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					mValues[j][i] = right_hand_side.mValues[j][i];
-				}
-			}
+			mValues[0] = right_hand_side[0];
+			mValues[1] = right_hand_side[1];
+			mValues[2] = right_hand_side[2];
+			mValues[3] = right_hand_side[3];
+			mValues[4] = right_hand_side[4];
+			mValues[5] = right_hand_side[5];
+			mValues[6] = right_hand_side[6];
+			mValues[7] = right_hand_side[7];
+			mValues[8] = right_hand_side[8];
+			mValues[9] = right_hand_side[9];
+			mValues[10] = right_hand_side[10];
+			mValues[11] = right_hand_side[11];
+			mValues[12] = right_hand_side[12];
+			mValues[13] = right_hand_side[13];
+			mValues[14] = right_hand_side[14];
+			mValues[15] = right_hand_side[15];
+		}
+		float& matrix4::get_member(int index) {
+			return mValues[index];
+		}
+		float& matrix4::operator[](const int& member)
+		{
+			return mValues[member];
+		}
+		matrix4& matrix4::operator+=( matrix4& right_hand_side)
+		{
+			mValues[0] += right_hand_side[0];
+			mValues[1] += right_hand_side[1];
+			mValues[2] += right_hand_side[2];
+			mValues[3] += right_hand_side[3];
+			mValues[4] += right_hand_side[4];
+			mValues[5] += right_hand_side[5];
+			mValues[6] += right_hand_side[6];
+			mValues[7] += right_hand_side[7];
+			mValues[8] += right_hand_side[8];
+			mValues[9] += right_hand_side[9];
+			mValues[10] += right_hand_side[10];
+			mValues[11] += right_hand_side[11];
+			mValues[12] += right_hand_side[12];
+			mValues[13] += right_hand_side[13];
+			mValues[14] += right_hand_side[14];
+			mValues[15] += right_hand_side[15];
+			return *this;
+		}
+		matrix4& matrix4::operator-=(matrix4& right_hand_side)
+		{
+			mValues[0] -= right_hand_side[0];
+			mValues[1] -= right_hand_side[1];
+			mValues[2] -= right_hand_side[2];
+			mValues[3] -= right_hand_side[3];
+			mValues[4] -= right_hand_side[4];
+			mValues[5] -= right_hand_side[5];
+			mValues[6] -= right_hand_side[6];
+			mValues[7] -= right_hand_side[7];
+			mValues[8] -= right_hand_side[8];
+			mValues[9] -= right_hand_side[9];
+			mValues[10] -= right_hand_side[10];
+			mValues[11] -= right_hand_side[11];
+			mValues[12] -= right_hand_side[12];
+			mValues[13] -= right_hand_side[13];
+			mValues[14] -= right_hand_side[14];
+			mValues[15] -= right_hand_side[15];
 			return *this;
 		}
 
-		matrix4& matrix4::operator+=(const matrix4& right_hand_side)
+		/*matrix4& matrix4::operator*=( matrix4& right_hand_side)
 		{
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					mValues[j][i] += right_hand_side.mValues[j][i];
-				}
-			}
-
-			return *this;
-		}
-
-		matrix4& matrix4::operator-=(const matrix4& right_hand_side)
+			
+		}*/
+		matrix4 matrix4::operator+( matrix4& right_hand_side) const
 		{
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					mValues[j][i] -= right_hand_side.mValues[j][i];
-				}
-			}
-			return *this;
-		}
-
-		matrix4& matrix4::operator*=(const matrix4& right_hand_side)
-		{
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					for (int k = 0; k < 3; k++) mValues[j][i] +=
-						 mValues[j][i + k] * right_hand_side.mValues[j][i + k];
-				}
-			}
-			return *this;
+			matrix4 newmatrix4 = matrix4();
+			newmatrix4[0] = mValues[0] + right_hand_side[0];
+			newmatrix4[1] = mValues[1] + right_hand_side[1];
+			newmatrix4[2] = mValues[2] + right_hand_side[2];
+			newmatrix4[3] = mValues[3] + right_hand_side[3];
+			newmatrix4[4] = mValues[4] + right_hand_side[4];
+			newmatrix4[5] = mValues[5] + right_hand_side[5];
+			newmatrix4[6] = mValues[6] + right_hand_side[6];
+			newmatrix4[7] = mValues[7] + right_hand_side[7];
+			newmatrix4[8] = mValues[8] + right_hand_side[8];
+			newmatrix4[9] = mValues[9] + right_hand_side[9];
+			newmatrix4[10] = mValues[10] + right_hand_side[10];
+			newmatrix4[11] = mValues[11] + right_hand_side[11];
+			newmatrix4[12] = mValues[12] + right_hand_side[12];
+			newmatrix4[13] = mValues[13] + right_hand_side[13];
+			newmatrix4[14] = mValues[14] + right_hand_side[14];
+			newmatrix4[15] = mValues[15] + right_hand_side[15];
+			return newmatrix4;
 		}
 
-		matrix4 matrix4::operator+(const matrix4& right_hand_side) const
+		matrix4 matrix4::operator-( matrix4& right_hand_side) const
 		{
-			matrix4 newMatrix4 = matrix4();
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					newMatrix4.mValues[j][i] = mValues[j][i] + right_hand_side.mValues[j][i];
-				}
-			}
-			return newMatrix4;
+			matrix4 newmatrix4 = matrix4();
+			newmatrix4[0] = mValues[0] - right_hand_side[0];
+			newmatrix4[1] = mValues[1] - right_hand_side[1];
+			newmatrix4[2] = mValues[2] - right_hand_side[2];
+			newmatrix4[3] = mValues[3] - right_hand_side[3];
+			newmatrix4[4] = mValues[4] - right_hand_side[4];
+			newmatrix4[5] = mValues[5] - right_hand_side[5];
+			newmatrix4[6] = mValues[6] - right_hand_side[6];
+			newmatrix4[7] = mValues[7] - right_hand_side[7];
+			newmatrix4[8] = mValues[8] - right_hand_side[8];
+			newmatrix4[9] = mValues[9] - right_hand_side[9];
+			newmatrix4[10] = mValues[10] - right_hand_side[10];
+			newmatrix4[11] = mValues[11] - right_hand_side[11];
+			newmatrix4[12] = mValues[12] - right_hand_side[12];
+			newmatrix4[13] = mValues[13] - right_hand_side[13];
+			newmatrix4[14] = mValues[14] - right_hand_side[14];
+			newmatrix4[15] = mValues[15] - right_hand_side[15];
+			return newmatrix4;
 		}
-
-		matrix4 matrix4::operator-(const matrix4& right_hand_side) const
+		/*matrix4 matrix4::operator*( matrix4& right_hand_side) const
 		{
-			matrix4 newMatrix4 = matrix4();
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					newMatrix4.mValues[j][i] = mValues[j][i] - right_hand_side.mValues[j][i];
-				}
-			}
-			return newMatrix4;
+			
+		}*/
+		void matrix4::print_the_matrix(std::ostream &myostream, const matrix4 &matrix) {
+				myostream << mValues[0] << " ";
+				myostream << mValues[4] << " ";
+				myostream << mValues[8] << " ";
+				myostream << mValues[12] << " ";
+				myostream  << "\n";
+				myostream << mValues[1] << " ";
+				myostream << mValues[5] << " ";
+				myostream << mValues[9] << " ";
+				myostream << mValues[13] << " ";
+				myostream << "\n";
+				myostream << mValues[2] << " ";
+				myostream << mValues[6] << " ";
+				myostream << mValues[10] << " ";
+				myostream << mValues[14] << " ";
+				myostream  << "\n";
+				myostream << mValues[3] << " ";
+				myostream << mValues[7] << " ";
+				myostream << mValues[11] << " ";
+				myostream << mValues[15] << " ";
 		}
-		matrix4 matrix4::operator*(const matrix4& right_hand_side) const
-		{
-			matrix4 newMatrix4 = matrix4();
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-						for (int k = 0; k < 3; k++) newMatrix4.mValues[j][i] 
-							+=  mValues[j][i+k] * right_hand_side.mValues[j][i+k];
-				}
-			}
-			return newMatrix4;
-		}
-		void matrix4::print_the_matrix(std::ostream &myOstream, const matrix4 &matrix) {
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; i++) {
-					myOstream << mValues[j][i] << " ";
-				}
-				myOstream << "\n";
-			}
-		}
+				
 		matrix4 matrix4::rotate_on_x(float angle)
 		{
-			matrix4 newMatrix = matrix4();
-			newMatrix.mValues[0][1] = std::cos(-angle);
-			newMatrix.mValues[0][1] = -std::sin(-angle);
-			newMatrix.mValues[2][3] = std::sin(-angle);
-			newMatrix.mValues[3][3] = std::cos(-angle);
-			return newMatrix;
+			matrix4 newmatrix = matrix4();
+			newmatrix.mValues[5]   = std::cos(-angle);
+			newmatrix.mValues[6]   = -std::sin(-angle);
+			newmatrix.mValues[9]   = std::sin(-angle);
+			newmatrix.mValues[10]  = std::cos(-angle);
+			return newmatrix;
 		}
 
 		matrix4 matrix4::rotate_on_y(float angle)
 		{
-			matrix4 newMatrix = matrix4();
-			newMatrix.mValues[0][0] = std::cos(-angle);
-			newMatrix.mValues[3][0] = std::sin(-angle);
-			newMatrix.mValues[0][2] = -std::sin(-angle);
-			newMatrix.mValues[3][3] = std::cos(-angle);
-			return newMatrix;
+			matrix4 newmatrix = matrix4();
+			newmatrix.mValues[0]= std::cos(-angle);
+			newmatrix.mValues[2]= std::sin(-angle);
+			newmatrix.mValues[8]= -std::sin(-angle);
+			newmatrix.mValues[10] = std::cos(-angle);
+			return newmatrix;
 		}
 
 		matrix4 matrix4::rotate_on_z(float angle)
 		{
-			matrix4 newMatrix = matrix4();
-			newMatrix.mValues[0][0] = std::cos(-angle);
-			newMatrix.mValues[1][0] = -std::sin(-angle);
-			newMatrix.mValues[1][1] = std::sin(-angle);
-			newMatrix.mValues[2][1] = std::cos(-angle);
-			return newMatrix;
+			matrix4 newmatrix = matrix4();
+			newmatrix.mValues[0] = std::cos(-angle);
+			newmatrix.mValues[1] = -std::sin(-angle);
+			newmatrix.mValues[4] = std::sin(-angle);
+			newmatrix.mValues[5] = std::cos(-angle);
+			return newmatrix;
 		}
 		void matrix4::rotate_matrix(float axis, float angle) {
 			if (axis == 0) {
 				rotate_on_x(angle);
 			}
 			else if (axis == 1) {
-				rotate_on_y(angle);
+				rotate_on_x(angle);
 			}
 			else if (axis == 2) {
 				rotate_on_z(angle);
 			}
+			else {
+				rotate_on_x(angle);
+				rotate_on_x(angle);
+				rotate_on_z(angle);
+			}
 		}
-		matrix4 matrix4::translate_matrix(){
-			matrix4 newMatrix = matrix4();
+		/*matrix4 matrix4::translate_matrix(){
 			
-			return newMatrix;
-		}
-		bool matrix4::invert_matrix(const double member[16], double indexOut[16])
+		}*/
+		matrix4 matrix4::invert_matrix()
 		{
-			double index[16], determinate;
-			int i;
+			matrix4 invertMatrix = matrix4();
+			double determinate;
 
-			index[0] = member[5] * member[10] * member[15] -
-				member[5] * member[11] * member[14] -
-				member[9] * member[6] * member[15] +
-				member[9] * member[7] * member[14] +
-				member[13] * member[6] * member[11] -
-				member[13] * member[7] * member[10];
+			invertMatrix[0] = mValues[5] * mValues[10] * mValues[15] -
+				mValues[5] * mValues[11] * mValues[14] -
+				mValues[9] * mValues[6] * mValues[15] +
+				mValues[9] * mValues[7] * mValues[14] +
+				mValues[13] * mValues[6] * mValues[11] -
+				mValues[13] * mValues[7] * mValues[10];
 
-			index[4] = -member[4] * member[10] * member[15] +
-				member[4] * member[11] * member[14] +
-				member[8] * member[6] * member[15] -
-				member[8] * member[7] * member[14] -
-				member[12] * member[6] * member[11] +
-				member[12] * member[7] * member[10];
+			invertMatrix[4] = -mValues[4] * mValues[10] * mValues[15] +
+				mValues[4] * mValues[11] * mValues[14] +
+				mValues[8] * mValues[6] * mValues[15] -
+				mValues[8] * mValues[7] * mValues[14] -
+				mValues[12] * mValues[6] * mValues[11] +
+				mValues[12] * mValues[7] * mValues[10];
 
-			index[8] = member[4] * member[9] * member[15] -
-				member[4] * member[11] * member[13] -
-				member[8] * member[5] * member[15] +
-				member[8] * member[7] * member[13] +
-				member[12] * member[5] * member[11] -
-				member[12] * member[7] * member[9];
+			invertMatrix[8] = mValues[4] * mValues[9] * mValues[15] -
+				mValues[4] * mValues[11] * mValues[13] -
+				mValues[8] * mValues[5] * mValues[15] +
+				mValues[8] * mValues[7] * mValues[13] +
+				mValues[12] * mValues[5] * mValues[11] -
+				mValues[12] * mValues[7] * mValues[9];
 
-			index[12] = -member[4] * member[9] * member[14] +
-				member[4] * member[10] * member[13] +
-				member[8] * member[5] * member[14] -
-				member[8] * member[6] * member[13] -
-				member[12] * member[5] * member[10] +
-				member[12] * member[6] * member[9];
+			invertMatrix[12] = -mValues[4] * mValues[9] * mValues[14] +
+				mValues[4] * mValues[10] * mValues[13] +
+				mValues[8] * mValues[5] * mValues[14] -
+				mValues[8] * mValues[6] * mValues[13] -
+				mValues[12] * mValues[5] * mValues[10] +
+				mValues[12] * mValues[6] * mValues[9];
 
-			index[1] = -member[1] * member[10] * member[15] +
-				member[1] * member[11] * member[14] +
-				member[9] * member[2] * member[15] -
-				member[9] * member[3] * member[14] -
-				member[13] * member[2] * member[11] +
-				member[13] * member[3] * member[10];
+			invertMatrix[1] = -mValues[1] * mValues[10] * mValues[15] +
+				mValues[1] * mValues[11] * mValues[14] +
+				mValues[9] * mValues[2] * mValues[15] -
+				mValues[9] * mValues[3] * mValues[14] -
+				mValues[13] * mValues[2] * mValues[11] +
+				mValues[13] * mValues[3] * mValues[10];
 
-			index[5] = member[0] * member[10] * member[15] -
-				member[0] * member[11] * member[14] -
-				member[8] * member[2] * member[15] +
-				member[8] * member[3] * member[14] +
-				member[12] * member[2] * member[11] -
-				member[12] * member[3] * member[10];
+			invertMatrix[5] = mValues[0] * mValues[10] * mValues[15] -
+				mValues[0] * mValues[11] * mValues[14] -
+				mValues[8] * mValues[2] * mValues[15] +
+				mValues[8] * mValues[3] * mValues[14] +
+				mValues[12] * mValues[2] * mValues[11] -
+				mValues[12] * mValues[3] * mValues[10];
 
-			index[9] = -member[0] * member[9] * member[15] +
-				member[0] * member[11] * member[13] +
-				member[8] * member[1] * member[15] -
-				member[8] * member[3] * member[13] -
-				member[12] * member[1] * member[11] +
-				member[12] * member[3] * member[9];
+			invertMatrix[9] = -mValues[0] * mValues[9] * mValues[15] +
+				mValues[0] * mValues[11] * mValues[13] +
+				mValues[8] * mValues[1] * mValues[15] -
+				mValues[8] * mValues[3] * mValues[13] -
+				mValues[12] * mValues[1] * mValues[11] +
+				mValues[12] * mValues[3] * mValues[9];
 
-			index[13] = member[0] * member[9] * member[14] -
-				member[0] * member[10] * member[13] -
-				member[8] * member[1] * member[14] +
-				member[8] * member[2] * member[13] +
-				member[12] * member[1] * member[10] -
-				member[12] * member[2] * member[9];
+			invertMatrix[13] = mValues[0] * mValues[9] * mValues[14] -
+				mValues[0] * mValues[10] * mValues[13] -
+				mValues[8] * mValues[1] * mValues[14] +
+				mValues[8] * mValues[2] * mValues[13] +
+				mValues[12] * mValues[1] * mValues[10] -
+				mValues[12] * mValues[2] * mValues[9];
 
-			index[2] = member[1] * member[6] * member[15] -
-				member[1] * member[7] * member[14] -
-				member[5] * member[2] * member[15] +
-				member[5] * member[3] * member[14] +
-				member[13] * member[2] * member[7] -
-				member[13] * member[3] * member[6];
+			invertMatrix[2] = mValues[1] * mValues[6] * mValues[15] -
+				mValues[1] * mValues[7] * mValues[14] -
+				mValues[5] * mValues[2] * mValues[15] +
+				mValues[5] * mValues[3] * mValues[14] +
+				mValues[13] * mValues[2] * mValues[7] -
+				mValues[13] * mValues[3] * mValues[6];
 
-			index[6] = -member[0] * member[6] * member[15] +
-				member[0] * member[7] * member[14] +
-				member[4] * member[2] * member[15] -
-				member[4] * member[3] * member[14] -
-				member[12] * member[2] * member[7] +
-				member[12] * member[3] * member[6];
+			invertMatrix[6] = -mValues[0] * mValues[6] * mValues[15] +
+				mValues[0] * mValues[7] * mValues[14] +
+				mValues[4] * mValues[2] * mValues[15] -
+				mValues[4] * mValues[3] * mValues[14] -
+				mValues[12] * mValues[2] * mValues[7] +
+				mValues[12] * mValues[3] * mValues[6];
 
-			index[10] = member[0] * member[5] * member[15] -
-				member[0] * member[7] * member[13] -
-				member[4] * member[1] * member[15] +
-				member[4] * member[3] * member[13] +
-				member[12] * member[1] * member[7] -
-				member[12] * member[3] * member[5];
+			invertMatrix[10] = mValues[0] * mValues[5] * mValues[15] -
+				mValues[0] * mValues[7] * mValues[13] -
+				mValues[4] * mValues[1] * mValues[15] +
+				mValues[4] * mValues[3] * mValues[13] +
+				mValues[12] * mValues[1] * mValues[7] -
+				mValues[12] * mValues[3] * mValues[5];
 
-			index[14] = -member[0] * member[5] * member[14] +
-				member[0] * member[6] * member[13] +
-				member[4] * member[1] * member[14] -
-				member[4] * member[2] * member[13] -
-				member[12] * member[1] * member[6] +
-				member[12] * member[2] * member[5];
+			invertMatrix[14] = -mValues[0] * mValues[5] * mValues[14] +
+				mValues[0] * mValues[6] * mValues[13] +
+				mValues[4] * mValues[1] * mValues[14] -
+				mValues[4] * mValues[2] * mValues[13] -
+				mValues[12] * mValues[1] * mValues[6] +
+				mValues[12] * mValues[2] * mValues[5];
 
-			index[3] = -member[1] * member[6] * member[11] +
-				member[1] * member[7] * member[10] +
-				member[5] * member[2] * member[11] -
-				member[5] * member[3] * member[10] -
-				member[9] * member[2] * member[7] +
-				member[9] * member[3] * member[6];
+			invertMatrix[3] = -mValues[1] * mValues[6] * mValues[11] +
+				mValues[1] * mValues[7] * mValues[10] +
+				mValues[5] * mValues[2] * mValues[11] -
+				mValues[5] * mValues[3] * mValues[10] -
+				mValues[9] * mValues[2] * mValues[7] +
+				mValues[9] * mValues[3] * mValues[6];
 
-			index[7] = member[0] * member[6] * member[11] -
-				member[0] * member[7] * member[10] -
-				member[4] * member[2] * member[11] +
-				member[4] * member[3] * member[10] +
-				member[8] * member[2] * member[7] -
-				member[8] * member[3] * member[6];
+			invertMatrix[7] = mValues[0] * mValues[6] * mValues[11] -
+				mValues[0] * mValues[7] * mValues[10] -
+				mValues[4] * mValues[2] * mValues[11] +
+				mValues[4] * mValues[3] * mValues[10] +
+				mValues[8] * mValues[2] * mValues[7] -
+				mValues[8] * mValues[3] * mValues[6];
 
-			index[11] = -member[0] * member[5] * member[11] +
-				member[0] * member[7] * member[9] +
-				member[4] * member[1] * member[11] -
-				member[4] * member[3] * member[9] -
-				member[8] * member[1] * member[7] +
-				member[8] * member[3] * member[5];
+			invertMatrix[11] = -mValues[0] * mValues[5] * mValues[11] +
+				mValues[0] * mValues[7] * mValues[9] +
+				mValues[4] * mValues[1] * mValues[11] -
+				mValues[4] * mValues[3] * mValues[9] -
+				mValues[8] * mValues[1] * mValues[7] +
+				mValues[8] * mValues[3] * mValues[5];
 
-			index[15] = member[0] * member[5] * member[10] -
-				member[0] * member[6] * member[9] -
-				member[4] * member[1] * member[10] +
-				member[4] * member[2] * member[9] +
-				member[8] * member[1] * member[6] -
-				member[8] * member[2] * member[5];
+			invertMatrix[15] = mValues[0] * mValues[5] * mValues[10] -
+				mValues[0] * mValues[6] * mValues[9] -
+				mValues[4] * mValues[1] * mValues[10] +
+				mValues[4] * mValues[2] * mValues[9] +
+				mValues[8] * mValues[1] * mValues[6] -
+				mValues[8] * mValues[2] * mValues[5];
 
-			determinate = member[0] * index[0] + member[1] * index[4] + member[2] * index[8] + member[3] * index[12];
+			determinate = mValues[0] * invertMatrix[0] + mValues[1] * invertMatrix[4] 
+				+ mValues[2] * invertMatrix[8] + mValues[3] * invertMatrix[12];
 
 			if (determinate == 0)
-				return false;
+				//return false;
 
 			determinate = 1.0 / determinate;
 
-			for (i = 0; i < 16; i++)
-				indexOut[i] = index[i] * determinate;
+			
+			invertMatrix[0]  = invertMatrix[0] * determinate;
+			invertMatrix[1]  = invertMatrix[1] * determinate;
+			invertMatrix[2]  = invertMatrix[2] * determinate;
+			invertMatrix[3]  = invertMatrix[3] * determinate;
+			invertMatrix[4]  = invertMatrix[4] * determinate;
+			invertMatrix[5]  = invertMatrix[5] * determinate;
+			invertMatrix[6]  = invertMatrix[6] * determinate;
+			invertMatrix[7]  = invertMatrix[7] * determinate;
+			invertMatrix[8]  = invertMatrix[8] * determinate;
+			invertMatrix[9]  = invertMatrix[9] * determinate;
+			invertMatrix[10] = invertMatrix[10] * determinate;
+			invertMatrix[11] = invertMatrix[11] * determinate;
+			invertMatrix[12] = invertMatrix[12] * determinate;
+			invertMatrix[13] = invertMatrix[13] * determinate;
+			invertMatrix[14] = invertMatrix[14] * determinate;
+			invertMatrix[15] = invertMatrix[15] * determinate;
 
-			return true;
+			return invertMatrix;
+
 		}
 
 	}

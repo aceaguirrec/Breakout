@@ -42,18 +42,21 @@ namespace Engine
 			matrix4	 rotate_on_y(float);
 			matrix4	 rotate_on_z(float);
 			void print_the_matrix(std::ostream &, const matrix4 & );
+			float& get_member( int );
+			matrix4 invert_matrix(void);
 
 			/* ==========================
 			* OPERATORS
 			* ==========================*/
 
-			matrix4& operator= (const matrix4&);
-			matrix4& operator+=(const matrix4&);
-			matrix4& operator-=(const matrix4&);
-			matrix4& operator*=(const matrix4&);
-			matrix4  operator+(const matrix4&) const;
-			matrix4  operator-(const matrix4&) const;
-			matrix4  operator*(const matrix4&) const;
+			matrix4& operator= (matrix4&);
+			matrix4& operator+=(matrix4&);
+			matrix4& operator-=(matrix4&);
+			matrix4& operator*=( matrix4&);
+			float&	 operator[](const int&);
+			matrix4  operator+( matrix4&) const;
+			matrix4  operator-( matrix4&) const;
+			matrix4  operator*( matrix4&) const;
 			
 
 			/* ==========================
