@@ -86,9 +86,11 @@ namespace Engine
 			newMatrix4[14] = mValues[11];
 			return newMatrix4;
 		}
+
 		float matrix4::get_individual_element(int indexLine) {
 			return mValues[indexLine];
 		}
+
 		int * matrix4::get_angles(){
 			float yaw, pitch, roll;
 			static int angles[3];
@@ -307,9 +309,50 @@ namespace Engine
 				rotate_on_z(angle);
 			}
 		}
-		/*matrix4 matrix4::translate_matrix(){
+
+		matrix4 matrix4::translation_matrix(Vector4 translationVector){
+
+			matrix4 mtx4;
+
+			mtx4[3] = translationVector.x;
+			mtx4[7] = translationVector.y;
+			mtx4[11] = translationVector.z;
+
+			return mtx4;
 			
-		}*/
+		}
+
+		Vector4 & matrix4::translate(Vector4 translationVector)
+		{
+			matrix4 mtx4; 
+
+			mtx4 = translation_matrix(translationVector);
+
+			translationVector.x = (mtx4[0] * translationVector.x) +
+				(mtx4[1] * translationVector.y) +
+				(mtx4[2] * translationVector.z) +
+				(mtx4[2] * translationVector.w);
+
+			translationVector.y = (mtx4[4] * translationVector.x) +
+				(mtx4[5] * translationVector.y) +
+				(mtx4[6] * translationVector.z) +
+				(mtx4[7] * translationVector.w);
+
+			translationVector.z = (mtx4[8] * translationVector.x) +
+				(mtx4[9] * translationVector.y) +
+				(mtx4[10] * translationVector.z) +
+				(mtx4[11] * translationVector.w);
+
+			translationVector.w = (mtx4[12] * 1) +
+				(mtx4[13] * 1) +
+				(mtx4[14] * 1) +
+				(mtx4[15] * 1);
+
+
+			return translationVector;
+		}
+
+
 		matrix4 matrix4::invert_matrix()
 		{
 			matrix4 invertMatrix = matrix4();
