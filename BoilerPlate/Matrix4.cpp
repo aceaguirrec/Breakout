@@ -57,6 +57,7 @@ namespace Engine
 			mValues[1] = 0;
 			mValues[2] = 0;
 			mValues[3] = 0;
+			mValues[4] = 0;
 			mValues[5] = 1;
 			mValues[6] = 0;
 			mValues[7] = 0;
@@ -225,10 +226,107 @@ namespace Engine
 			return *this;
 		}
 
-		/*matrix4& matrix4::operator*=( matrix4& right_hand_side){
+		matrix4& matrix4::operator*=( matrix4& right_hand_side){
 
+			//First Position
+			mValues[0] = mValues[0] * right_hand_side.mValues[0] +
+				mValues[4] * right_hand_side.mValues[1] +
+				mValues[8] * right_hand_side.mValues[2] +
+				mValues[12] * right_hand_side.mValues[3];
+
+			//Second Position
+			mValues[1] = mValues[1] * right_hand_side.mValues[0] +
+				mValues[5] * right_hand_side.mValues[1] +
+				mValues[9] * right_hand_side.mValues[2] +
+				mValues[13] * right_hand_side.mValues[3];
+
+			//Third Position
+			mValues[2] = mValues[2] * right_hand_side.mValues[0] +
+				mValues[6] * right_hand_side.mValues[1] +
+				mValues[10] * right_hand_side.mValues[2] +
+				mValues[14] * right_hand_side.mValues[3];
+
+			//Fourth Position
+			mValues[3] = mValues[3] * right_hand_side.mValues[0] +
+				mValues[7] * right_hand_side.mValues[1] +
+				mValues[11] * right_hand_side.mValues[2] +
+				mValues[15] * right_hand_side.mValues[3];
+
+			//Fifth Position
+			mValues[4] = mValues[0] * right_hand_side.mValues[4] +
+				mValues[4] * right_hand_side.mValues[5] +
+				mValues[8] * right_hand_side.mValues[6] +
+				mValues[12] * right_hand_side.mValues[7];
+
+			//Sixth Position
+			mValues[5] = mValues[1] * right_hand_side.mValues[4] +
+				mValues[5] * right_hand_side.mValues[5] +
+				mValues[9] * right_hand_side.mValues[6] +
+				mValues[13] * right_hand_side.mValues[7];
+
+			//Seventh Position
+			mValues[6] = mValues[2] * right_hand_side.mValues[4] +
+				mValues[6] * right_hand_side.mValues[5] +
+				mValues[10] * right_hand_side.mValues[6] +
+				mValues[14] * right_hand_side.mValues[7];
+
+			//Eighth Position
+			mValues[7] = mValues[3] * right_hand_side.mValues[4] +
+				mValues[7] * right_hand_side.mValues[5] +
+				mValues[11] * right_hand_side.mValues[6] +
+				mValues[15] * right_hand_side.mValues[7];
+
+			//Ninth Position
+			mValues[8] = mValues[0] * right_hand_side.mValues[8] +
+				mValues[4] * right_hand_side.mValues[9] +
+				mValues[8] * right_hand_side.mValues[10] +
+				mValues[12] * right_hand_side.mValues[11];
+
+			//Tenth Position
+			mValues[9] = mValues[1] * right_hand_side.mValues[8] +
+				mValues[5] * right_hand_side.mValues[9] +
+				mValues[9] * right_hand_side.mValues[10] +
+				mValues[13] * right_hand_side.mValues[11];
+
+			//Eleventh Position
+			mValues[10] = mValues[2] * right_hand_side.mValues[8] +
+				mValues[6] * right_hand_side.mValues[9] +
+				mValues[10] * right_hand_side.mValues[10] +
+				mValues[14] * right_hand_side.mValues[11];
+
+			//Twelfth Position
+			mValues[11] = mValues[3] * right_hand_side.mValues[8] +
+				mValues[7] * right_hand_side.mValues[9] +
+				mValues[11] * right_hand_side.mValues[10] +
+				mValues[15] * right_hand_side.mValues[11];
+
+			//Thirteenth Position
+			mValues[12] = mValues[0] * right_hand_side.mValues[12] +
+				mValues[4] * right_hand_side.mValues[13] +
+				mValues[8] * right_hand_side.mValues[14] +
+				mValues[12] * right_hand_side.mValues[15];
+
+			//Fourteenth Position
+			mValues[13] = mValues[1] * right_hand_side.mValues[12] +
+				mValues[5] * right_hand_side.mValues[13] +
+				mValues[9] * right_hand_side.mValues[14] +
+				mValues[13] * right_hand_side.mValues[15];
+
+			//Fifteenth Position
+			mValues[14] = mValues[2] * right_hand_side.mValues[12] +
+				mValues[6] * right_hand_side.mValues[13] +
+				mValues[10] * right_hand_side.mValues[14] +
+				mValues[14] * right_hand_side.mValues[15];
+
+			//Sixteenth Position
+			mValues[15] = mValues[3] * right_hand_side.mValues[12] +
+				mValues[7] * right_hand_side.mValues[13] +
+				mValues[11] * right_hand_side.mValues[14] +
+				mValues[15] * right_hand_side.mValues[15];
 			
-		}*/
+			return *this;
+			
+		}
 
 
 		matrix4 matrix4::operator+( matrix4& right_hand_side) const{
@@ -279,10 +377,106 @@ namespace Engine
 		}
 
 
-		/*matrix4 matrix4::operator*( matrix4& right_hand_side) const{
+		matrix4 matrix4::operator*( matrix4& right_hand_side) const{
 
-			
-		}*/
+			matrix4 newMatrix4 = matrix4();
+			//First Position
+			newMatrix4.mValues[0] = mValues[0] * right_hand_side.mValues[0] +
+				mValues[4] * right_hand_side.mValues[1] +
+				mValues[8] * right_hand_side.mValues[2] +
+				mValues[12] * right_hand_side.mValues[3];
+
+			//Second Position
+			newMatrix4.mValues[1] = mValues[1] * right_hand_side.mValues[0] +
+				mValues[5] * right_hand_side.mValues[1] +
+				mValues[9] * right_hand_side.mValues[2] +
+				mValues[13] * right_hand_side.mValues[3];
+
+			//Third Position
+			newMatrix4.mValues[2] = mValues[2] * right_hand_side.mValues[0] +
+				mValues[6] * right_hand_side.mValues[1] +
+				mValues[10] * right_hand_side.mValues[2] +
+				mValues[14] * right_hand_side.mValues[3];
+
+			//Fourth Position
+			newMatrix4.mValues[3] = mValues[3] * right_hand_side.mValues[0] +
+				mValues[7] * right_hand_side.mValues[1] +
+				mValues[11] * right_hand_side.mValues[2] +
+				mValues[15] * right_hand_side.mValues[3];
+
+			//Fifth Position
+			newMatrix4.mValues[4] = mValues[0] * right_hand_side.mValues[4] +
+				mValues[4] * right_hand_side.mValues[5] +
+				mValues[8] * right_hand_side.mValues[6] +
+				mValues[12] * right_hand_side.mValues[7];
+
+			//Sixth Position
+			newMatrix4.mValues[5] = mValues[1] * right_hand_side.mValues[4] +
+				mValues[5] * right_hand_side.mValues[5] +
+				mValues[9] * right_hand_side.mValues[6] +
+				mValues[13] * right_hand_side.mValues[7];
+
+			//Seventh Position
+			newMatrix4.mValues[6] = mValues[2] * right_hand_side.mValues[4] +
+				mValues[6] * right_hand_side.mValues[5] +
+				mValues[10] * right_hand_side.mValues[6] +
+				mValues[14] * right_hand_side.mValues[7];
+
+			//Eighth Position
+			newMatrix4.mValues[7] = mValues[3] * right_hand_side.mValues[4] +
+				mValues[7] * right_hand_side.mValues[5] +
+				mValues[11] * right_hand_side.mValues[6] +
+				mValues[15] * right_hand_side.mValues[7];
+
+			//Ninth Position
+			newMatrix4.mValues[8] = mValues[0] * right_hand_side.mValues[8] +
+				mValues[4] * right_hand_side.mValues[9] +
+				mValues[8] * right_hand_side.mValues[10] +
+				mValues[12] * right_hand_side.mValues[11];
+
+			//Tenth Position
+			newMatrix4.mValues[9] = mValues[1] * right_hand_side.mValues[8] +
+				mValues[5] * right_hand_side.mValues[9] +
+				mValues[9] * right_hand_side.mValues[10] +
+				mValues[13] * right_hand_side.mValues[11];
+
+			//Eleventh Position
+			newMatrix4.mValues[10] = mValues[2] * right_hand_side.mValues[8] +
+				mValues[6] * right_hand_side.mValues[9] +
+				mValues[10] * right_hand_side.mValues[10] +
+				mValues[14] * right_hand_side.mValues[11];
+
+			//Twelfth Position
+			newMatrix4.mValues[11] = mValues[3] * right_hand_side.mValues[8] +
+				mValues[7] * right_hand_side.mValues[9] +
+				mValues[11] * right_hand_side.mValues[10] +
+				mValues[15] * right_hand_side.mValues[11];
+
+			//Thirteenth Position
+			newMatrix4.mValues[12] = mValues[0] * right_hand_side.mValues[12] +
+				mValues[4] * right_hand_side.mValues[13] +
+				mValues[8] * right_hand_side.mValues[14] +
+				mValues[12] * right_hand_side.mValues[15];
+
+			//Fourteenth Position
+			newMatrix4.mValues[13] = mValues[1] * right_hand_side.mValues[12] +
+				mValues[5] * right_hand_side.mValues[13] +
+				mValues[9] * right_hand_side.mValues[14] +
+				mValues[13] * right_hand_side.mValues[15];
+
+			//Fifteenth Position
+			newMatrix4.mValues[14] = mValues[2] * right_hand_side.mValues[12] +
+				mValues[6] * right_hand_side.mValues[13] +
+				mValues[10] * right_hand_side.mValues[14] +
+				mValues[14] * right_hand_side.mValues[15];
+
+			//Sixteenth Position
+			newMatrix4.mValues[15] = mValues[3] * right_hand_side.mValues[12] +
+				mValues[7] * right_hand_side.mValues[13] +
+				mValues[11] * right_hand_side.mValues[14] +
+				mValues[15] * right_hand_side.mValues[15];
+			return newMatrix4;
+		}
 
 
 		void matrix4::print_the_matrix(std::ostream &myostream, const matrix4 &matrix) {
@@ -371,7 +565,7 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::translation_matrix(Vector4 translationVector){
+		matrix4 matrix4::get_translation_matrix(Vector4 translationVector){
 
 			matrix4 mtx4;
 
@@ -384,11 +578,11 @@ namespace Engine
 		}
 
 
-		Vector4 & matrix4::translate(Vector4 translationVector){
+		Vector4 & matrix4::translate_matrix(Vector4 translationVector){
 
 			matrix4 mtx4; 
 
-			mtx4 = translation_matrix(translationVector);
+			mtx4 = get_translation_matrix(translationVector);
 
 			translationVector.x = (mtx4[0] * translationVector.x) +
 				(mtx4[1] * translationVector.y) +
@@ -534,9 +728,6 @@ namespace Engine
 
 			determinate = mValues[0] * invertMatrix[0] + mValues[1] * invertMatrix[4] 
 				+ mValues[2] * invertMatrix[8] + mValues[3] * invertMatrix[12];
-
-			if (determinate == 0)
-				//return false;
 
 			determinate = 1.0 / determinate;
 
