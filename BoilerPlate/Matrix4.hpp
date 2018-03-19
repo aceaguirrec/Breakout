@@ -65,12 +65,18 @@ namespace Engine
 			matrix4	 rotate_on_y(float);
 			matrix4	 rotate_on_z(float);
 			void print_the_matrix(std::ostream &, const matrix4 & );
+<<<<<<< HEAD
 >>>>>>> 9914f330f358c03f2225848152920c9a73440643
+=======
+			float& get_member( int );
+			matrix4 invert_matrix(void);
+>>>>>>> a3604fe7838709dc8bbd79aeeac94cb99bb8a59e
 
 			/* ==========================
 			* OPERATORS
 			* ==========================*/
 
+<<<<<<< HEAD
 			matrix4& operator= (const matrix4&);
 			matrix4& operator+=(const matrix4&);
 			matrix4& operator-=(const matrix4&);
@@ -81,6 +87,16 @@ namespace Engine
 <<<<<<< HEAD
 
 =======
+=======
+			matrix4& operator= (matrix4&);
+			matrix4& operator+=(matrix4&);
+			matrix4& operator-=(matrix4&);
+			matrix4& operator*=( matrix4&);
+			float&	 operator[](const int&);
+			matrix4  operator+( matrix4&) const;
+			matrix4  operator-( matrix4&) const;
+			matrix4  operator*( matrix4&) const;
+>>>>>>> a3604fe7838709dc8bbd79aeeac94cb99bb8a59e
 			
 >>>>>>> 9914f330f358c03f2225848152920c9a73440643
 
