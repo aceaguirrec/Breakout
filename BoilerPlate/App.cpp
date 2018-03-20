@@ -6,20 +6,7 @@
 #include <fstream>
 #include <sstream>
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
-
-// OpenGL includes
-#include <GL/glew.h>
-#include <SDL2/SDL_opengl.h>
-
-// TODO: RR: MOVE THIS OUT
-#include <string>
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <algorithm>
-#include <sstream>
+#include "renderer.hpp"
 
 
 namespace Engine
@@ -27,6 +14,7 @@ namespace Engine
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
 
+<<<<<<< HEAD
 
 	GLuint VertexArrayObject;	// VAO
 	GLuint VertexBufferObject;	// VBO
@@ -168,6 +156,9 @@ namespace Engine
 
 		return ProgramID;
 	}
+=======
+	renderer appRenderer;
+>>>>>>> LastBranch
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -186,10 +177,13 @@ namespace Engine
 
 	App::~App()
 	{
+<<<<<<< HEAD
 
 		glDeleteBuffers(1, &VertexBufferObject);
 		glDeleteVertexArrays(1, &VertexArrayObject);
 		glDeleteProgram(ProgramID);
+=======
+>>>>>>> LastBranch
 
 		CleanupSDL();
 	}
@@ -204,6 +198,7 @@ namespace Engine
 
 		m_state = GameState::RUNNING;
 
+<<<<<<< HEAD
 
 		//TODO Move this out!
 		ProgramID = LoadShaders("vertex.glsl", "frag.glsl");
@@ -275,6 +270,10 @@ namespace Engine
 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+=======
+		appRenderer.initialize_program_id();
+		appRenderer.load_vertices();
+>>>>>>> LastBranch
 
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -329,6 +328,10 @@ namespace Engine
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
+
+		case SDL_SCANCODE_D:
+			appRenderer.toggle_polygon_mode();
+			break;
 		}
 	}
 
@@ -373,6 +376,7 @@ namespace Engine
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+<<<<<<< HEAD
 		glUseProgram(ProgramID);
 		glBindVertexArray(VertexArrayObject);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -382,6 +386,9 @@ namespace Engine
 		glBindVertexArray(VertexArrayObject);
 		glDrawArrays(GL_TRIANGLES,0,6);
 
+=======
+		appRenderer.render();
+>>>>>>> LastBranch
 
 		SDL_GL_SwapWindow(m_mainWindow);
 	}

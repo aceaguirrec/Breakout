@@ -1,8 +1,9 @@
 #pragma once
 #ifndef _MATRIX4_H_
 #define _MATRIX4_H_
-#include <vector>
 #include <iostream>
+#include <vector>
+#include "Vector4.hpp"
 
 namespace Engine
 {
@@ -58,7 +59,8 @@ namespace Engine
 =======
 			float	 get_individual_element(int);
 			int *	 get_angles(void);
-			matrix4	 translate_matrix(void);
+			matrix4	 get_translation_matrix(Vector4 translationVector);
+			Vector4& translate_matrix(Vector4 translationVector);
 			bool invert_matrix(const double member[16], double indexOut[16]);
 			void	 rotate_matrix(float , float);
 			matrix4	 rotate_on_x(float);

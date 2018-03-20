@@ -172,10 +172,14 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtilities.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="renderer.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
+    <ClCompile Include="shader_manager.cpp" />
+    <ClCompile Include="textures.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
@@ -183,10 +187,14 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
+    <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="MathUtilities.hpp" />
     <ClInclude Include="Matrix4.hpp" />
+    <ClInclude Include="renderer.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
+    <ClInclude Include="shader_manager.hpp" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="textures.hpp" />
     <ClInclude Include="TimeManager.hpp" />
     <ClInclude Include="Vector2.hpp" />
     <ClInclude Include="Vector3.hpp" />
