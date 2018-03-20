@@ -1,36 +1,52 @@
 #include "shader_manager.hpp"
+#include "error_manager.hpp"
 
+#include <string>
+#include <vector>
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<sstream>
 
-namespace engine {
+Engine::error_manager errorManager;
+
+namespace Engine
+{
 
 
 	shader_manager::shader_manager()
 	{
-	}
-	GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_path) {
 
+	}
+
+	GLuint shader_manager::LoadShaders(const char* pVertexFilePath, const char* pFragmentFilePath)
+	{
 		// Create the shaders
 		GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 		GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 
 		// Read the Vertex Shader code from the file
 		std::string VertexShaderCode;
-		std::ifstream VertexShaderStream(vertex_file_path, std::ios::in);
+		std::ifstream VertexShaderStream(pVertexFilePath, std::ios::in);
 		if (VertexShaderStream.is_open()) {
 			std::stringstream sstr;
 			sstr << VertexShaderStream.rdbuf();
 			VertexShaderCode = sstr.str();
 			VertexShaderStream.close();
 		}
-		else {
-			printf("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !\n", vertex_file_path);
+		else
+		{
+			errorManager.displayError(pVertexFilePath, "30", "Impossible to open file. Are you in the right directory ?", " ");
+			//printf("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !\n", pVertexFilePath);
 			getchar();
 			return 0;
 		}
 
+		//errorManager.DisplayErrorMessageBox();
+
 		// Read the Fragment Shader code from the file
 		std::string FragmentShaderCode;
-		std::ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
+		std::ifstream FragmentShaderStream(pFragmentFilePath, std::ios::in);
 		if (FragmentShaderStream.is_open()) {
 			std::stringstream sstr;
 			sstr << FragmentShaderStream.rdbuf();
@@ -43,7 +59,7 @@ namespace engine {
 
 
 		// Compile Vertex Shader
-		printf("Compiling shader : %s\n", vertex_file_path);
+		printf("Compiling shader : %s\n", pVertexFilePath);
 		char const * VertexSourcePointer = VertexShaderCode.c_str();
 		glShaderSource(VertexShaderID, 1, &VertexSourcePointer, NULL);
 		glCompileShader(VertexShaderID);
@@ -54,13 +70,14 @@ namespace engine {
 		if (InfoLogLength > 0) {
 			std::vector<char> VertexShaderErrorMessage(InfoLogLength + 1);
 			glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
-			printf("%s\n", &VertexShaderErrorMessage[0]);
+			errorManager.displayError(pVertexFilePath, "69", &VertexShaderErrorMessage[0], " ");
+			//printf("%s\n", &VertexShaderErrorMessage[0]);
 		}
 
 
 
 		// Compile Fragment Shader
-		printf("Compiling shader : %s\n", fragment_file_path);
+		printf("Compiling shader : %s\n", pFragmentFilePath);
 		char const * FragmentSourcePointer = FragmentShaderCode.c_str();
 		glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer, NULL);
 		glCompileShader(FragmentShaderID);
@@ -71,7 +88,8 @@ namespace engine {
 		if (InfoLogLength > 0) {
 			std::vector<char> FragmentShaderErrorMessage(InfoLogLength + 1);
 			glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
-			printf("%s\n", &FragmentShaderErrorMessage[0]);
+			errorManager.displayError(pFragmentFilePath, "87", &FragmentShaderErrorMessage[0], " ");
+			//printf("%s\n", &FragmentShaderErrorMessage[0]);
 		}
 
 
@@ -89,7 +107,8 @@ namespace engine {
 		if (InfoLogLength > 0) {
 			std::vector<char> ProgramErrorMessage(InfoLogLength + 1);
 			glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
-			printf("%s\n", &ProgramErrorMessage[0]);
+			errorManager.displayError(pVertexFilePath, "106", &ProgramErrorMessage[0], " ");
+			//printf("%s\n", &ProgramErrorMessage[0]);
 		}
 
 
@@ -101,4 +120,5 @@ namespace engine {
 
 		return ProgramID;
 	}
+
 }

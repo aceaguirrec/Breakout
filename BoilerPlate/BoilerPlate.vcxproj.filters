@@ -12,6 +12,8 @@
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="textures.cpp" />
     <ClCompile Include="error_manager.cpp" />
+    <ClCompile Include="shader_manager.cpp" />
+    <ClCompile Include="renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -25,6 +27,8 @@
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="textures.hpp" />
     <ClInclude Include="error_manager.hpp" />
+    <ClInclude Include="renderer.hpp" />
+    <ClInclude Include="shader_manager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
