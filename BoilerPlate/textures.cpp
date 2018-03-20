@@ -13,7 +13,7 @@ namespace Engine {
 
 	textures::textures(const char* texture_path) {
 
-		texture = load_textures(texture_path);
+		mTexture = load_textures(texture_path);
 	}
 
 	GLuint textures::load_textures(const char * texture_path){
@@ -57,7 +57,7 @@ namespace Engine {
 
 	GLuint textures::get_texture() {
 
-		return texture;
+		return mTexture;
 	}
 
 

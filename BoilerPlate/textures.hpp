@@ -21,7 +21,7 @@ namespace Engine {
 
 	private:
 
-		GLuint texture;
+		GLuint mTexture;
 	
 	};
 
