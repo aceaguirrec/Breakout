@@ -42,12 +42,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <None Include="frag.glsl" />
-    <None Include="vertex.glsl" />
-=======
     <None Include="vertex.glsl" />
     <None Include="frag.glsl" />
->>>>>>> 9914f330f358c03f2225848152920c9a73440643
   </ItemGroup>
 </Project>

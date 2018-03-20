@@ -27,9 +27,9 @@ namespace Engine
 			/* ==========================
 			* PUBLIC FUNCTIONS
 			* ==========================*/
-			float   vectorLength() const;
-			float   squaredLength() const;
-			float	normalize();
+			float   Length() const;
+			float   SquaredLength() const;
+			float	Normalize();
 
 			/* ==========================
 			* OPERATORS

@@ -24,9 +24,9 @@ namespace Engine
 			/* ==========================
 			* PUBLIC FUNCTIONS
 			* ==========================*/
-			float   vectorLength() const;
-			float   squaredLength() const;
-			float	normalize();
+			float   Length() const;
+			float   SquaredLength() const;
+			float	Normalize();
 
 			/* ==========================
 			* OPERATORS
@@ -42,8 +42,8 @@ namespace Engine
 			Vector2  operator/(const Vector2&) const;
 			bool     operator==(const Vector2&) const;
 			bool     operator!=(const Vector2&) const;
-			friend	 Vector2 operator*(float, const Vector2&);
-			friend	 Vector2 operator*(const Vector2&, float);
+			friend Vector2 operator*(float, const Vector2&);
+			friend Vector2 operator*(const Vector2&, float);
 
 			/* ==========================
 			* MEMBERS

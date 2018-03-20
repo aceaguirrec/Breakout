@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _MathUTILITIES_H_
-#define _MathUTILITIES_H_
+#ifndef _MATHUTILITIES_H_
+#define _MATHUTILITIES_H_
 
 namespace Engine
 {
@@ -24,7 +24,7 @@ namespace Engine
 			float degrees_to_radians(float);
 			float radians_to_degrees(float);
 			float radians_distance(float, float);
-			float angular_distance(float, float);
+			float Angular_distance(float, float);
 			bool  is_a_power_of_two(int);
 			float interpolate(float, float, float);
 
@@ -119,4 +119,4 @@ namespace Engine
 		};
 	}
 }
-#endif // !_MathUTILITIES_H_
+#endif // !_MATHUTILITIES_H_
