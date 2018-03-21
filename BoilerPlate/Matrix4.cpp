@@ -91,6 +91,7 @@ namespace Engine
 			newMatrix4[1] = mValues[4];
 			newMatrix4[2] = mValues[8];
 			newMatrix4[3] = mValues[12];
+			newMatrix4[4] = mValues[1];
 			newMatrix4[6] = mValues[9];
 			newMatrix4[7] = mValues[13];
 			newMatrix4[8] = mValues[2];
