@@ -187,6 +187,9 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
+    <ClInclude Include="Engine\core\Component.hpp" />
+    <ClInclude Include="Engine\core\GameObject.hpp" />
+    <ClInclude Include="Engine\core\IUpdate.hpp" />
     <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="MathUtilities.hpp" />
     <ClInclude Include="Matrix4.hpp" />

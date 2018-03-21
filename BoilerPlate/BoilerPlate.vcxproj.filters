@@ -29,6 +29,9 @@
     <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="renderer.hpp" />
     <ClInclude Include="shader_manager.hpp" />
+    <ClInclude Include="Engine\core\Component.hpp" />
+    <ClInclude Include="Engine\core\IUpdate.hpp" />
+    <ClInclude Include="Engine\core\GameObject.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
