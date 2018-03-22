@@ -28,9 +28,9 @@ public:
 
 private:
 
-	bool dKey;
-	bool delKey;
-	bool escKey;
+	bool dKey;		//this draws objects
+	bool delKey;	//this deletes objects
+	bool escKey;	//this closes App
 
 };
 #endif // !INPUT_MANAGER_HPP
