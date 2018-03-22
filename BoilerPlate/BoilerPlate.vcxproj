@@ -174,6 +174,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Engine\core\component.cpp" />
     <ClCompile Include="Engine\core\game_object.cpp" />
+    <ClCompile Include="Engine\core\input_manager.cpp" />
     <ClCompile Include="Engine\core\unique_id.cpp" />
     <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -192,6 +193,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="App.hpp" />
     <ClInclude Include="Engine\core\component.hpp" />
     <ClInclude Include="Engine\core\game_object.hpp" />
+    <ClInclude Include="Engine\core\input_manager.hpp" />
     <ClInclude Include="Engine\core\i_render.hpp" />
     <ClInclude Include="Engine\core\i_update.hpp" />
     <ClInclude Include="Engine\core\unique_id.hpp" />

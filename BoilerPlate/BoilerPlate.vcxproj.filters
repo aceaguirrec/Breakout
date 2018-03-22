@@ -17,6 +17,7 @@
     <ClCompile Include="Engine\core\component.cpp" />
     <ClCompile Include="Engine\core\game_object.cpp" />
     <ClCompile Include="Engine\core\unique_id.cpp" />
+    <ClCompile Include="Engine\core\input_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="Engine\core\game_object.hpp" />
     <ClInclude Include="Engine\core\i_render.hpp" />
     <ClInclude Include="Engine\core\unique_id.hpp" />
+    <ClInclude Include="Engine\core\input_manager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="frag.glsl" />
