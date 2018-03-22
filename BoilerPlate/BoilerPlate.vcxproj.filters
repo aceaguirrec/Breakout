@@ -4,41 +4,41 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MathUtilities.cpp" />
-    <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="shader_manager.cpp" />
     <ClCompile Include="textures.cpp" />
     <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="Vector2.cpp" />
-    <ClCompile Include="Vector3.cpp" />
-    <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="Engine\core\component.cpp" />
     <ClCompile Include="Engine\core\game_object.cpp" />
     <ClCompile Include="Engine\core\unique_id.cpp" />
     <ClCompile Include="Engine\core\input_manager.cpp" />
+    <ClCompile Include="math_utilities.cpp" />
+    <ClCompile Include="matrix_4.cpp" />
+    <ClCompile Include="vector_2.cpp" />
+    <ClCompile Include="vector_3.cpp" />
+    <ClCompile Include="vector_4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="error_manager.hpp" />
-    <ClInclude Include="MathUtilities.hpp" />
-    <ClInclude Include="Matrix4.hpp" />
     <ClInclude Include="renderer.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="shader_manager.hpp" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="textures.hpp" />
     <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="Vector2.hpp" />
-    <ClInclude Include="Vector3.hpp" />
-    <ClInclude Include="Vector4.hpp" />
     <ClInclude Include="Engine\core\component.hpp" />
     <ClInclude Include="Engine\core\i_update.hpp" />
     <ClInclude Include="Engine\core\game_object.hpp" />
     <ClInclude Include="Engine\core\i_render.hpp" />
     <ClInclude Include="Engine\core\unique_id.hpp" />
     <ClInclude Include="Engine\core\input_manager.hpp" />
+    <ClInclude Include="math_utilities.hpp" />
+    <ClInclude Include="matrix_4.hpp" />
+    <ClInclude Include="vector_2.hpp" />
+    <ClInclude Include="vector_3.hpp" />
+    <ClInclude Include="vector_4.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="frag.glsl" />

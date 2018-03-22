@@ -1,10 +1,11 @@
-#include "MathUtilities.hpp"
-#include "Math.h"
+#include <cmath>
+#include "math_utilities.hpp"
+
 using namespace std;
 
-namespace Engine
+namespace engine
 {
-	namespace Math
+	namespace math
 	{
 		math_utilities::math_utilities() {
 		}

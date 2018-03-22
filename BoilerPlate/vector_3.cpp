@@ -1,13 +1,13 @@
-#include "Vector2.hpp"
-#include "Vector3.hpp"
+#include "vector_2.hpp"
+#include "vector_3.hpp"
 #include <cmath>
-namespace Engine {
+namespace engine {
 
-	namespace Math {
+	namespace math {
 
-		Vector3 Vector3::Origin = Vector3();
+		vector_3 vector_3::Origin = vector_3();
 
-		Vector3::Vector3()
+		vector_3::vector_3()
 
 			: x(0.0f)
 			, y(0.0f)
@@ -15,7 +15,7 @@ namespace Engine {
 			, length(0.0f)
 		{}
 
-		Vector3::Vector3(float _x, float _y, float _z)
+		vector_3::vector_3(float _x, float _y, float _z)
 
 			: x(_x)
 			, y(_y)
@@ -26,7 +26,7 @@ namespace Engine {
 			Length();
 		}
 
-		Vector3::Vector3(float _uniform)
+		vector_3::vector_3(float _uniform)
 
 			: x(_uniform)
 			, y(_uniform)
@@ -37,7 +37,7 @@ namespace Engine {
 			Length();
 		}
 
-		Vector3::Vector3(const Vector2& v2)
+		vector_3::vector_3(const vector_2& v2)
 
 			: x(v2.x)
 			, y(v2.y)
@@ -48,17 +48,17 @@ namespace Engine {
 			Length();
 		}
 
-		float Vector3::Length() const {
+		float vector_3::Length() const {
 
 			return std::sqrt(x * x + y * y + z * z);
 		}
 
-		float Vector3::SquaredLength() const {
+		float vector_3::SquaredLength() const {
 
 			return x * x + y * y + z * z;
 		}
 
-		float Vector3::Normalize() {
+		float vector_3::Normalize() {
 
 			// Calculate length
 			Length();
@@ -72,7 +72,7 @@ namespace Engine {
 		}
 
 
-		Vector3& Vector3::operator=(const Vector3& rhs) {
+		vector_3& vector_3::operator=(const vector_3& rhs) {
 
 			// Prevent self assignment
 			if (this == &rhs) return *this;
@@ -84,7 +84,7 @@ namespace Engine {
 			return *this;
 		}
 
-		Vector3& Vector3::operator+=(const Vector3& rhs) {
+		vector_3& vector_3::operator+=(const vector_3& rhs) {
 
 			x = x + rhs.x;
 			y = y + rhs.y;
@@ -93,7 +93,7 @@ namespace Engine {
 			return *this;
 		}
 
-		Vector3& Vector3::operator-=(const Vector3& rhs) {
+		vector_3& vector_3::operator-=(const vector_3& rhs) {
 
 			x = x - rhs.x;
 			y = y - rhs.y;
@@ -102,7 +102,7 @@ namespace Engine {
 			return *this;
 		}
 
-		Vector3& Vector3::operator*=(const Vector3& rhs) {
+		vector_3& vector_3::operator*=(const vector_3& rhs) {
 
 			x = x * rhs.x;
 			y = y * rhs.y;
@@ -111,7 +111,7 @@ namespace Engine {
 			return *this;
 		}
 
-		Vector3& Vector3::operator/=(const Vector3& rhs) {
+		vector_3& vector_3::operator/=(const vector_3& rhs) {
 
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
@@ -125,43 +125,43 @@ namespace Engine {
 		}
 
 
-		Vector3 Vector3::operator+(const Vector3& rhs) const {
+		vector_3 vector_3::operator+(const vector_3& rhs) const {
 
-			return Vector3(
+			return vector_3(
 				x + rhs.x,
 				y + rhs.y,
 				z + rhs.z);
 		}
 
-		Vector3 Vector3::operator-(const Vector3& rhs) const {
+		vector_3 vector_3::operator-(const vector_3& rhs) const {
 
-			return Vector3(
+			return vector_3(
 				x - rhs.x,
 				y - rhs.y,
 				z - rhs.z);
 		}
 
-		Vector3 Vector3::operator*(const Vector3& rhs) const {
+		vector_3 vector_3::operator*(const vector_3& rhs) const {
 
-			return Vector3(
+			return vector_3(
 				x * rhs.x,
 				y * rhs.y,
 				z * rhs.z);
 		}
 
-		Vector3 Vector3::operator/(const Vector3& rhs) const {
+		vector_3 vector_3::operator/(const vector_3& rhs) const {
 
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
 			if (rhs.z == 0) throw "Division by zero is not defined!";
 
-			return Vector3(
+			return vector_3(
 				x / rhs.x,
 				y / rhs.y,
 				z / rhs.z);
 		}
 
-		bool Vector3::operator==(const Vector3& rhs) const {
+		bool vector_3::operator==(const vector_3& rhs) const {
 
 			return
 				x == rhs.x &&
@@ -169,7 +169,7 @@ namespace Engine {
 				z == rhs.z;
 		}
 
-		bool Vector3::operator!=(const Vector3& rhs) const {
+		bool vector_3::operator!=(const vector_3& rhs) const {
 
 			return
 				x != rhs.x ||
@@ -177,17 +177,17 @@ namespace Engine {
 				z != rhs.z;
 		}
 
-		Vector3 operator*(float scaleUnit, const Vector3& rhs) {
+		vector_3 operator*(float scaleUnit, const vector_3& rhs) {
 
-			return Vector3(
+			return vector_3(
 				scaleUnit * rhs.x,
 				scaleUnit * rhs.y,
 				scaleUnit * rhs.z);
 		}
 
-		Vector3 operator*(const Vector3& lhs, float scaleUnit) {
+		vector_3 operator*(const vector_3& lhs, float scaleUnit) {
 
-			return Vector3(
+			return vector_3(
 				scaleUnit * lhs.x,
 				scaleUnit * lhs.y,
 				scaleUnit * lhs.z);

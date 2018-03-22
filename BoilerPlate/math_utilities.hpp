@@ -2,9 +2,9 @@
 #ifndef _MATHUTILITIES_H_
 #define _MATHUTILITIES_H_
 
-namespace Engine
+namespace engine
 {
-	namespace Math
+	namespace math
 	{
 		
 		struct math_utilities

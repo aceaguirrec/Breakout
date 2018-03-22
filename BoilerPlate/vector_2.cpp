@@ -1,19 +1,20 @@
-#include "Vector2.hpp"
 #include <cmath>
+#include "vector_2.hpp"
 
-namespace Engine
+
+namespace engine
 {
-	namespace Math
+	namespace math
 	{
-		Vector2 Vector2::Origin = Vector2();
+		vector_2 vector_2::Origin = vector_2();
 
-		Vector2::Vector2(){
+		vector_2::vector_2(){
 			x = (0.0f);
 			y = (0.0f);
 			length = (0.0f);
 		}
 
-		Vector2::Vector2(float _x, float _y)
+		vector_2::vector_2(float _x, float _y)
 		{
 			x = (_x);
 			y = (_y);
@@ -22,7 +23,7 @@ namespace Engine
 			Length();
 		}
 
-		Vector2::Vector2(float _uniform)
+		vector_2::vector_2(float _uniform)
 		{
 			x = (_uniform);
 			y = (_uniform);
@@ -31,17 +32,17 @@ namespace Engine
 			Length();
 		}
 
-		float Vector2::Length() const
+		float vector_2::Length() const
 		{
 			return std::sqrt(x * x + y * y);
 		}
 
-		float Vector2::SquaredLength() const
+		float vector_2::SquaredLength() const
 		{
 			return x * x + y * y;
 		}
 
-		float Vector2::Normalize()
+		float vector_2::Normalize()
 		{
 			// Calculate length
 			Length();
@@ -53,7 +54,7 @@ namespace Engine
 			return length;
 		}
 
-		Vector2& Vector2::operator=(const Vector2& rhs)
+		vector_2& vector_2::operator=(const vector_2& rhs)
 		{
 			// Prevent self assignment
 			if (this == &rhs) return *this;
@@ -64,7 +65,7 @@ namespace Engine
 			return *this;
 		}
 
-		Vector2& Vector2::operator+=(const Vector2& rhs)
+		vector_2& vector_2::operator+=(const vector_2& rhs)
 		{
 			x = x + rhs.x;
 			y = y + rhs.y;
@@ -72,7 +73,7 @@ namespace Engine
 			return *this;
 		}
 
-		Vector2& Vector2::operator-=(const Vector2& rhs)
+		vector_2& vector_2::operator-=(const vector_2& rhs)
 		{
 			x = x - rhs.x;
 			y = y - rhs.y;
@@ -80,7 +81,7 @@ namespace Engine
 			return *this;
 		}
 
-		Vector2& Vector2::operator*=(const Vector2& rhs)
+		vector_2& vector_2::operator*=(const vector_2& rhs)
 		{
 			x = x * rhs.x;
 			y = y * rhs.y;
@@ -88,7 +89,7 @@ namespace Engine
 			return *this;
 		}
 
-		Vector2& Vector2::operator/=(const Vector2& rhs)
+		vector_2& vector_2::operator/=(const vector_2& rhs)
 		{
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
@@ -100,61 +101,61 @@ namespace Engine
 		}
 
 
-		Vector2 Vector2::operator+(const Vector2& rhs) const
+		vector_2 vector_2::operator+(const vector_2& rhs) const
 		{
-			return Vector2(
+			return vector_2(
 				x + rhs.x,
 				y + rhs.y);
 		}
 
-		Vector2 Vector2::operator-(const Vector2& rhs) const
+		vector_2 vector_2::operator-(const vector_2& rhs) const
 		{
-			return Vector2(
+			return vector_2(
 				x - rhs.x,
 				y - rhs.y);
 		}
 
-		Vector2 Vector2::operator*(const Vector2& rhs) const
+		vector_2 vector_2::operator*(const vector_2& rhs) const
 		{
-			return Vector2(
+			return vector_2(
 				x * rhs.x,
 				y * rhs.y);
 		}
 
-		Vector2 Vector2::operator/(const Vector2& rhs) const
+		vector_2 vector_2::operator/(const vector_2& rhs) const
 		{
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
 
-			return Vector2(
+			return vector_2(
 				x / rhs.x,
 				y / rhs.y);
 		}
 
-		bool Vector2::operator==(const Vector2& rhs) const
+		bool vector_2::operator==(const vector_2& rhs) const
 		{
 			return
 				x == rhs.x &&
 				y == rhs.y;
 		}
 
-		bool Vector2::operator!=(const Vector2& rhs) const
+		bool vector_2::operator!=(const vector_2& rhs) const
 		{
 			return
 				x != rhs.x ||
 				y != rhs.y;
 		}
 
-		Vector2 operator*(float scaleUnit, const Vector2& rhs)
+		vector_2 operator*(float scaleUnit, const vector_2& rhs)
 		{
-			return Vector2(
+			return vector_2(
 				scaleUnit * rhs.x,
 				scaleUnit * rhs.y);
 		}
 
-		Vector2 operator*(const Vector2& lhs, float scaleUnit)
+		vector_2 operator*(const vector_2& lhs, float scaleUnit)
 		{
-			return Vector2(
+			return vector_2(
 				scaleUnit * lhs.x,
 				scaleUnit * lhs.y);
 		}

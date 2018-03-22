@@ -1,12 +1,12 @@
-#include "Matrix4.hpp"
+#include "matrix_4.hpp"
 
-namespace Engine 
+namespace engine 
 {
-	namespace Math 
+	namespace math 
 	{
-		matrix4::matrix4() {}
+		matrix_4::matrix_4() {}
 		
-		matrix4::matrix4(float member0, float member4, float member8,  float member12,
+		matrix_4::matrix_4(float member0, float member4, float member8,  float member12,
 						 float member1, float member5, float member9,  float member13,
 						 float member2, float member6, float member10, float member14,
 						 float member3, float member7, float member11, float member15)
@@ -30,7 +30,7 @@ namespace Engine
 		}
 
 
-		matrix4::matrix4(std::vector<float> array) { 
+		matrix_4::matrix_4(std::vector<float> array) { 
 
 			mValues[0] = array[0];
 			mValues[1] = array[1];
@@ -51,7 +51,7 @@ namespace Engine
 		}
 
 
-		void matrix4::identity() {
+		void matrix_4::identity() {
 
 			mValues[0] = 1;
 			mValues[1] = 0;
@@ -72,7 +72,7 @@ namespace Engine
 		}
 
 
-		int* matrix4::get_values() {
+		int* matrix_4::get_values() {
 
 			static int pointerToValues[15];
 
@@ -85,9 +85,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::get_transpose() {
+		matrix_4 matrix_4::get_transpose() {
 
-			matrix4 newMatrix4 = matrix4();
+			matrix_4 newMatrix4 = matrix_4();
 			newMatrix4[1] = mValues[4];
 			newMatrix4[2] = mValues[8];
 			newMatrix4[3] = mValues[12];
@@ -104,13 +104,13 @@ namespace Engine
 		}
 
 
-		float matrix4::get_individual_element(int indexLine) {
+		float matrix_4::get_individual_element(int indexLine) {
 
 			return mValues[indexLine];
 		}
 
 
-		int * matrix4::get_angles(){
+		int * matrix_4::get_angles(){
 
 			float yaw, pitch, roll;
 			static int angles[3];
@@ -145,7 +145,7 @@ namespace Engine
 		}
 		//operators
 
-		matrix4& matrix4::operator=(matrix4& right_hand_side){
+		matrix_4& matrix_4::operator=(matrix_4& right_hand_side){
 
 			// prevent self assignment
 			if (this == &right_hand_side) return *this;
@@ -169,19 +169,19 @@ namespace Engine
 		}
 
 
-		float& matrix4::get_member(int index) {
+		float& matrix_4::get_member(int index) {
 
 			return mValues[index];
 		}
 
 
-		float& matrix4::operator[](const int& member){
+		float& matrix_4::operator[](const int& member){
 
 			return mValues[member];
 		}
 
 
-		matrix4& matrix4::operator+=( matrix4& right_hand_side){
+		matrix_4& matrix_4::operator+=( matrix_4& right_hand_side){
 
 			mValues[0] += right_hand_side[0];
 			mValues[1] += right_hand_side[1];
@@ -204,7 +204,7 @@ namespace Engine
 		}
 
 
-		matrix4& matrix4::operator-=(matrix4& right_hand_side){
+		matrix_4& matrix_4::operator-=(matrix_4& right_hand_side){
 
 			mValues[0] -= right_hand_side[0];
 			mValues[1] -= right_hand_side[1];
@@ -226,7 +226,7 @@ namespace Engine
 			return *this;
 		}
 
-		matrix4& matrix4::operator*=( matrix4& right_hand_side){
+		matrix_4& matrix_4::operator*=( matrix_4& right_hand_side){
 
 			//First Position
 			mValues[0] = mValues[0] * right_hand_side.mValues[0] +
@@ -329,9 +329,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::operator+( matrix4& right_hand_side) const{
+		matrix_4 matrix_4::operator+( matrix_4& right_hand_side) const{
 
-			matrix4 newmatrix4 = matrix4();
+			matrix_4 newmatrix4 = matrix_4();
 			newmatrix4[0] = mValues[0] + right_hand_side[0];
 			newmatrix4[1] = mValues[1] + right_hand_side[1];
 			newmatrix4[2] = mValues[2] + right_hand_side[2];
@@ -353,9 +353,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::operator-( matrix4& right_hand_side) const{
+		matrix_4 matrix_4::operator-( matrix_4& right_hand_side) const{
 
-			matrix4 newmatrix4 = matrix4();
+			matrix_4 newmatrix4 = matrix_4();
 			newmatrix4[0] = mValues[0] - right_hand_side[0];
 			newmatrix4[1] = mValues[1] - right_hand_side[1];
 			newmatrix4[2] = mValues[2] - right_hand_side[2];
@@ -377,9 +377,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::operator*( matrix4& right_hand_side) const{
+		matrix_4 matrix_4::operator*( matrix_4& right_hand_side) const{
 
-			matrix4 newMatrix4 = matrix4();
+			matrix_4 newMatrix4 = matrix_4();
 			//First Position
 			newMatrix4.mValues[0] = mValues[0] * right_hand_side.mValues[0] +
 				mValues[4] * right_hand_side.mValues[1] +
@@ -479,7 +479,7 @@ namespace Engine
 		}
 
 
-		void matrix4::print_the_matrix(std::ostream &myostream, const matrix4 &matrix) {
+		void matrix_4::print_the_matrix(std::ostream &myostream, const matrix_4 &matrix) {
 
 				myostream << mValues[0] << " ";
 				myostream << mValues[4] << " ";
@@ -503,9 +503,9 @@ namespace Engine
 		}
 
 				
-		matrix4 matrix4::rotate_on_x(float angle){
+		matrix_4 matrix_4::rotate_on_x(float angle){
 
-			matrix4 newmatrix = matrix4();
+			matrix_4 newmatrix = matrix_4();
 			newmatrix.mValues[5]   = std::cos(-angle);
 			newmatrix.mValues[6]   = -std::sin(-angle);
 			newmatrix.mValues[9]   = std::sin(-angle);
@@ -515,9 +515,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::rotate_on_y(float angle){
+		matrix_4 matrix_4::rotate_on_y(float angle){
 
-			matrix4 newmatrix = matrix4();
+			matrix_4 newmatrix = matrix_4();
 			newmatrix.mValues[0]= std::cos(-angle);
 			newmatrix.mValues[2]= std::sin(-angle);
 			newmatrix.mValues[8]= -std::sin(-angle);
@@ -527,9 +527,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::rotate_on_z(float angle){
+		matrix_4 matrix_4::rotate_on_z(float angle){
 
-			matrix4 newmatrix = matrix4();
+			matrix_4 newmatrix = matrix_4();
 			newmatrix.mValues[0] = std::cos(-angle);
 			newmatrix.mValues[1] = -std::sin(-angle);
 			newmatrix.mValues[4] = std::sin(-angle);
@@ -539,7 +539,7 @@ namespace Engine
 		}
 
 
-		void matrix4::rotate_matrix(float axis, float angle) {
+		void matrix_4::rotate_matrix(float axis, float angle) {
 
 			if (axis == 0) {
 
@@ -565,9 +565,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::get_translation_matrix(Vector4 translationVector){
+		matrix_4 matrix_4::get_translation_matrix(vector_4 translationVector){
 
-			matrix4 mtx4;
+			matrix_4 mtx4;
 
 			mtx4[3] = translationVector.x;
 			mtx4[7] = translationVector.y;
@@ -578,9 +578,9 @@ namespace Engine
 		}
 
 
-		Vector4 & matrix4::translate_matrix(Vector4 translationVector){
+		vector_4 & matrix_4::translate_matrix(vector_4 translationVector){
 
-			matrix4 mtx4; 
+			matrix_4 mtx4; 
 
 			mtx4 = get_translation_matrix(translationVector);
 
@@ -609,9 +609,9 @@ namespace Engine
 		}
 
 
-		matrix4 matrix4::invert_matrix(){
+		matrix_4 matrix_4::invert_matrix(){
 
-			matrix4 invertMatrix = matrix4();
+			matrix_4 invertMatrix = matrix_4();
 			double determinate;
 
 			invertMatrix[0] = mValues[5] * mValues[10] * mValues[15] -
