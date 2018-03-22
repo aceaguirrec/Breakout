@@ -2,50 +2,44 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SDLEvent.cpp" />
-    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="MathUtilities.cpp" />
+    <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="SDLEvent.cpp" />
+    <ClCompile Include="shader_manager.cpp" />
+    <ClCompile Include="textures.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
-    <ClCompile Include="Matrix4.cpp" />
-    <ClCompile Include="textures.cpp" />
-    <ClCompile Include="error_manager.cpp" />
-    <ClCompile Include="shader_manager.cpp" />
-    <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="Engine\core\component.cpp" />
+    <ClCompile Include="Engine\core\game_object.cpp" />
+    <ClCompile Include="Engine\core\unique_id.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
-    <ClInclude Include="SDLEvent.hpp" />
-    <ClInclude Include="TimeManager.hpp" />
+    <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="MathUtilities.hpp" />
+    <ClInclude Include="Matrix4.hpp" />
+    <ClInclude Include="renderer.hpp" />
+    <ClInclude Include="SDLEvent.hpp" />
+    <ClInclude Include="shader_manager.hpp" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="textures.hpp" />
+    <ClInclude Include="TimeManager.hpp" />
     <ClInclude Include="Vector2.hpp" />
     <ClInclude Include="Vector3.hpp" />
     <ClInclude Include="Vector4.hpp" />
-    <ClInclude Include="Matrix4.hpp" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="textures.hpp" />
-    <ClInclude Include="error_manager.hpp" />
-    <ClInclude Include="renderer.hpp" />
-    <ClInclude Include="shader_manager.hpp" />
-    <ClInclude Include="Engine\core\Component.hpp" />
-    <ClInclude Include="Engine\core\IUpdate.hpp" />
-    <ClInclude Include="Engine\core\GameObject.hpp" />
+    <ClInclude Include="Engine\core\component.hpp" />
+    <ClInclude Include="Engine\core\i_update.hpp" />
+    <ClInclude Include="Engine\core\game_object.hpp" />
+    <ClInclude Include="Engine\core\i_render.hpp" />
+    <ClInclude Include="Engine\core\unique_id.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{6f9fb37f-e47b-46c3-8209-dbf486018555}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Source files">
-      <UniqueIdentifier>{0a3ec513-922c-4b14-83e3-98e1934fea74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Header files">
-      <UniqueIdentifier>{da8cc683-e66e-46b9-be58-7d0e16e23f76}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="vertex.glsl" />
     <None Include="frag.glsl" />
+    <None Include="vertex.glsl" />
   </ItemGroup>
 </Project>

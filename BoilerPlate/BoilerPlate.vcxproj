@@ -172,6 +172,9 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Engine\core\component.cpp" />
+    <ClCompile Include="Engine\core\game_object.cpp" />
+    <ClCompile Include="Engine\core\unique_id.cpp" />
     <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtilities.cpp" />
@@ -187,9 +190,11 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
-    <ClInclude Include="Engine\core\Component.hpp" />
-    <ClInclude Include="Engine\core\GameObject.hpp" />
-    <ClInclude Include="Engine\core\IUpdate.hpp" />
+    <ClInclude Include="Engine\core\component.hpp" />
+    <ClInclude Include="Engine\core\game_object.hpp" />
+    <ClInclude Include="Engine\core\i_render.hpp" />
+    <ClInclude Include="Engine\core\i_update.hpp" />
+    <ClInclude Include="Engine\core\unique_id.hpp" />
     <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="MathUtilities.hpp" />
     <ClInclude Include="Matrix4.hpp" />
