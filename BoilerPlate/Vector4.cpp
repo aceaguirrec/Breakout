@@ -1,6 +1,6 @@
-#include "vector_3.hpp"
-#include "vector_2.hpp"
-#include "vector_4.hpp"
+#include "Vector3.hpp"
+#include "Vector2.hpp"
+#include "Vector4.hpp"
 
 #include <cmath>
 
@@ -8,9 +8,9 @@ namespace engine
 {
 	namespace math
 	{
-		vector_4 vector_4::Origin = vector_4();
+		Vector4 Vector4::Origin = Vector4();
 
-		vector_4::vector_4()
+		Vector4::Vector4()
 			: x(0.0f)
 			, y(0.0f)
 			, z(0.0f)
@@ -18,7 +18,7 @@ namespace engine
 			, length(0.0f)
 		{}
 
-		vector_4::vector_4(float _x, float _y, float _z, float _w)
+		Vector4::Vector4(float _x, float _y, float _z, float _w)
 			: x(_x)
 			, y(_y)
 			, z(_z)
@@ -29,7 +29,7 @@ namespace engine
 			Length();
 		}
 
-		vector_4::vector_4(float _uniform)
+		Vector4::Vector4(float _uniform)
 			: x(_uniform)
 			, y(_uniform)
 			, z(_uniform)
@@ -40,7 +40,7 @@ namespace engine
 			Length();
 		}
 
-		vector_4::vector_4(const vector_2& vec2)
+		Vector4::Vector4(const vector2& vec2)
 			: x(vec2.x)
 			, y(vec2.y)
 			, z(0.0f)
@@ -51,7 +51,7 @@ namespace engine
 			Length();
 		}
 
-		vector_4::vector_4(const vector_3& vec3)
+		Vector4::Vector4(const vector3& vec3)
 			: x(vec3.x)
 			, y(vec3.y)
 			, z(vec3.z)
@@ -62,17 +62,17 @@ namespace engine
 			Length();
 		}
 
-		float vector_4::Length() const {
+		float Vector4::Length() const {
 
 			return std::sqrt(x * x + y * y + z * z);
 		}
 
-		float vector_4::SquaredLength() const {
+		float Vector4::SquaredLength() const {
 
 			return x * x + y * y + z * z;
 		}
 
-		float vector_4::Normalize() {
+		float Vector4::Normalize() {
 
 			// Calculate length
 			Length();
@@ -85,7 +85,7 @@ namespace engine
 			return length;
 		}
 
-		vector_4& vector_4::operator=(const vector_4& rhs) {
+		Vector4& Vector4::operator=(const Vector4& rhs) {
 
 			// Prevent self assignment
 			if (this == &rhs) return *this;
@@ -97,7 +97,7 @@ namespace engine
 			return *this;
 		}
 
-		vector_4& vector_4::operator+=(const vector_4& rhs) {
+		Vector4& Vector4::operator+=(const Vector4& rhs) {
 
 			x = x + rhs.x;
 			y = y + rhs.y;
@@ -106,7 +106,7 @@ namespace engine
 			return *this;
 		}
 
-		vector_4& vector_4::operator-=(const vector_4& rhs) {
+		Vector4& Vector4::operator-=(const Vector4& rhs) {
 
 			x = x - rhs.x;
 			y = y - rhs.y;
@@ -115,7 +115,7 @@ namespace engine
 			return *this;
 		}
 
-		vector_4& vector_4::operator*=(const vector_4& rhs) {
+		Vector4& Vector4::operator*=(const Vector4& rhs) {
 
 			x = x * rhs.x;
 			y = y * rhs.y;
@@ -124,7 +124,7 @@ namespace engine
 			return *this;
 		}
 
-		vector_4& vector_4::operator/=(const vector_4& rhs) {
+		Vector4& Vector4::operator/=(const Vector4& rhs) {
 
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
@@ -138,47 +138,47 @@ namespace engine
 		}
 
 
-		vector_4 vector_4::operator+(const vector_4& rhs) const {
+		Vector4 Vector4::operator+(const Vector4& rhs) const {
 
-			return vector_4(
+			return Vector4(
 				x + rhs.x,
 				y + rhs.y,
 				z + rhs.z,
 				w + rhs.w);
 		}
 
-		vector_4 vector_4::operator-(const vector_4& rhs) const {
+		Vector4 Vector4::operator-(const Vector4& rhs) const {
 
-			return vector_4(
+			return Vector4(
 				x - rhs.x,
 				y - rhs.y,
 				z - rhs.z,
 				w - rhs.w);
 		}
 
-		vector_4 vector_4::operator*(const vector_4& rhs) const {
+		Vector4 Vector4::operator*(const Vector4& rhs) const {
 
-			return vector_4(
+			return Vector4(
 				x * rhs.x,
 				y * rhs.y,
 				z * rhs.z,
 				w * rhs.w);
 		}
 
-		vector_4 vector_4::operator/(const vector_4& rhs) const {
+		Vector4 Vector4::operator/(const Vector4& rhs) const {
 
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
 			if (rhs.z == 0) throw "Division by zero is not defined!";
 
-			return vector_4(
+			return Vector4(
 				x / rhs.x,
 				y / rhs.y,
 				z / rhs.z,
 				w / rhs.w);
 		}
 
-		bool vector_4::operator==(const vector_4& rhs) const {
+		bool Vector4::operator==(const Vector4& rhs) const {
 
 			return
 				x == rhs.x &&
@@ -187,7 +187,7 @@ namespace engine
 				w == rhs.w;
 		}
 
-		bool vector_4::operator!=(const vector_4& rhs) const {
+		bool Vector4::operator!=(const Vector4& rhs) const {
 
 			return
 				x != rhs.x ||
@@ -196,18 +196,18 @@ namespace engine
 				w != rhs.w;
 		}
 
-		vector_4 operator*(float scaleUnit, const vector_4& rhs) {
+		Vector4 operator*(float scaleUnit, const Vector4& rhs) {
 
-			return vector_4(
+			return Vector4(
 				scaleUnit * rhs.x,
 				scaleUnit * rhs.y,
 				scaleUnit * rhs.z,
 				scaleUnit * rhs.w);
 		}
 
-		vector_4 operator*(const vector_4& lhs, float scaleUnit) {
+		Vector4 operator*(const Vector4& lhs, float scaleUnit) {
 
-			return vector_4(
+			return Vector4(
 				scaleUnit * lhs.x,
 				scaleUnit * lhs.y,
 				scaleUnit * lhs.z,

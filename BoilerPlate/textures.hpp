@@ -7,7 +7,7 @@
 #include <SDL2/SDL_opengl.h>
 
 
-namespace Engine {
+namespace engine {
 
 	class textures {
 
@@ -18,6 +18,7 @@ namespace Engine {
 
 		GLuint load_textures(const char* texture_path);
 		GLuint get_texture();
+		void initialize(const char* texture_path);
 
 	private:
 

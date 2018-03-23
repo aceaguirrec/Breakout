@@ -10,7 +10,7 @@
 const int MAX_TEXTURES_NUMBER = 16;
 
 
-namespace Engine {
+namespace engine {
 
 	class renderer {
 

@@ -6,7 +6,7 @@ namespace engine
 {
 	namespace core
 	{
-		class i_render
+		class i_render 
 		{
 		public:
 			virtual ~i_render() = default;

@@ -6,7 +6,7 @@
 #include <iostream>
 
 
-namespace Engine {
+namespace engine {
 
 	struct error_manager {
 

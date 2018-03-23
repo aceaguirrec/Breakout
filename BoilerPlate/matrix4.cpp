@@ -1,12 +1,12 @@
-#include "matrix_4.hpp"
+#include "Matrix4.hpp"
 
 namespace engine 
 {
 	namespace math 
 	{
-		matrix_4::matrix_4() {}
+		matrix4::matrix4() {}
 		
-		matrix_4::matrix_4(float member0, float member4, float member8,  float member12,
+		matrix4::matrix4(float member0, float member4, float member8,  float member12,
 						 float member1, float member5, float member9,  float member13,
 						 float member2, float member6, float member10, float member14,
 						 float member3, float member7, float member11, float member15)
@@ -30,7 +30,7 @@ namespace engine
 		}
 
 
-		matrix_4::matrix_4(std::vector<float> array) { 
+		matrix4::matrix4(std::vector<float> array) { 
 
 			mValues[0] = array[0];
 			mValues[1] = array[1];
@@ -51,7 +51,7 @@ namespace engine
 		}
 
 
-		void matrix_4::identity() {
+		void matrix4::identity() {
 
 			mValues[0] = 1;
 			mValues[1] = 0;
@@ -72,7 +72,7 @@ namespace engine
 		}
 
 
-		int* matrix_4::get_values() {
+		int* matrix4::get_values() {
 
 			static int pointerToValues[15];
 
@@ -85,9 +85,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::get_transpose() {
+		matrix4 matrix4::get_transpose() {
 
-			matrix_4 newMatrix4 = matrix_4();
+			matrix4 newMatrix4 = matrix4();
 			newMatrix4[1] = mValues[4];
 			newMatrix4[2] = mValues[8];
 			newMatrix4[3] = mValues[12];
@@ -104,13 +104,13 @@ namespace engine
 		}
 
 
-		float matrix_4::get_individual_element(int indexLine) {
+		float matrix4::get_individual_element(int indexLine) {
 
 			return mValues[indexLine];
 		}
 
 
-		int * matrix_4::get_angles(){
+		int * matrix4::get_angles(){
 
 			float yaw, pitch, roll;
 			static int angles[3];
@@ -145,7 +145,7 @@ namespace engine
 		}
 		//operators
 
-		matrix_4& matrix_4::operator=(matrix_4& right_hand_side){
+		matrix4& matrix4::operator=(matrix4& right_hand_side){
 
 			// prevent self assignment
 			if (this == &right_hand_side) return *this;
@@ -169,19 +169,19 @@ namespace engine
 		}
 
 
-		float& matrix_4::get_member(int index) {
+		float& matrix4::get_member(int index) {
 
 			return mValues[index];
 		}
 
 
-		float& matrix_4::operator[](const int& member){
+		float& matrix4::operator[](const int& member){
 
 			return mValues[member];
 		}
 
 
-		matrix_4& matrix_4::operator+=( matrix_4& right_hand_side){
+		matrix4& matrix4::operator+=( matrix4& right_hand_side){
 
 			mValues[0] += right_hand_side[0];
 			mValues[1] += right_hand_side[1];
@@ -204,7 +204,7 @@ namespace engine
 		}
 
 
-		matrix_4& matrix_4::operator-=(matrix_4& right_hand_side){
+		matrix4& matrix4::operator-=(matrix4& right_hand_side){
 
 			mValues[0] -= right_hand_side[0];
 			mValues[1] -= right_hand_side[1];
@@ -226,7 +226,7 @@ namespace engine
 			return *this;
 		}
 
-		matrix_4& matrix_4::operator*=( matrix_4& right_hand_side){
+		matrix4& matrix4::operator*=( matrix4& right_hand_side){
 
 			//First Position
 			mValues[0] = mValues[0] * right_hand_side.mValues[0] +
@@ -329,9 +329,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::operator+( matrix_4& right_hand_side) const{
+		matrix4 matrix4::operator+( matrix4& right_hand_side) const{
 
-			matrix_4 newmatrix4 = matrix_4();
+			matrix4 newmatrix4 = matrix4();
 			newmatrix4[0] = mValues[0] + right_hand_side[0];
 			newmatrix4[1] = mValues[1] + right_hand_side[1];
 			newmatrix4[2] = mValues[2] + right_hand_side[2];
@@ -353,9 +353,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::operator-( matrix_4& right_hand_side) const{
+		matrix4 matrix4::operator-( matrix4& right_hand_side) const{
 
-			matrix_4 newmatrix4 = matrix_4();
+			matrix4 newmatrix4 = matrix4();
 			newmatrix4[0] = mValues[0] - right_hand_side[0];
 			newmatrix4[1] = mValues[1] - right_hand_side[1];
 			newmatrix4[2] = mValues[2] - right_hand_side[2];
@@ -377,9 +377,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::operator*( matrix_4& right_hand_side) const{
+		matrix4 matrix4::operator*( matrix4& right_hand_side) const{
 
-			matrix_4 newMatrix4 = matrix_4();
+			matrix4 newMatrix4 = matrix4();
 			//First Position
 			newMatrix4.mValues[0] = mValues[0] * right_hand_side.mValues[0] +
 				mValues[4] * right_hand_side.mValues[1] +
@@ -479,7 +479,7 @@ namespace engine
 		}
 
 
-		void matrix_4::print_the_matrix(std::ostream &myostream, const matrix_4 &matrix) {
+		void matrix4::print_the_matrix(std::ostream &myostream, const matrix4 &matrix) {
 
 				myostream << mValues[0] << " ";
 				myostream << mValues[4] << " ";
@@ -503,9 +503,9 @@ namespace engine
 		}
 
 				
-		matrix_4 matrix_4::rotate_on_x(float angle){
+		matrix4 matrix4::rotate_on_x(float angle){
 
-			matrix_4 newmatrix = matrix_4();
+			matrix4 newmatrix = matrix4();
 			newmatrix.mValues[5]   = std::cos(-angle);
 			newmatrix.mValues[6]   = -std::sin(-angle);
 			newmatrix.mValues[9]   = std::sin(-angle);
@@ -515,9 +515,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::rotate_on_y(float angle){
+		matrix4 matrix4::rotate_on_y(float angle){
 
-			matrix_4 newmatrix = matrix_4();
+			matrix4 newmatrix = matrix4();
 			newmatrix.mValues[0]= std::cos(-angle);
 			newmatrix.mValues[2]= std::sin(-angle);
 			newmatrix.mValues[8]= -std::sin(-angle);
@@ -527,9 +527,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::rotate_on_z(float angle){
+		matrix4 matrix4::rotate_on_z(float angle){
 
-			matrix_4 newmatrix = matrix_4();
+			matrix4 newmatrix = matrix4();
 			newmatrix.mValues[0] = std::cos(-angle);
 			newmatrix.mValues[1] = -std::sin(-angle);
 			newmatrix.mValues[4] = std::sin(-angle);
@@ -539,7 +539,7 @@ namespace engine
 		}
 
 
-		void matrix_4::rotate_matrix(float axis, float angle) {
+		void matrix4::rotate_matrix(float axis, float angle) {
 
 			if (axis == 0) {
 
@@ -565,9 +565,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::get_translation_matrix(vector_4 translationVector){
+		matrix4 matrix4::get_translation_matrix(Vector4 translationVector){
 
-			matrix_4 mtx4;
+			matrix4 mtx4;
 
 			mtx4[3] = translationVector.x;
 			mtx4[7] = translationVector.y;
@@ -578,9 +578,9 @@ namespace engine
 		}
 
 
-		vector_4 & matrix_4::translate_matrix(vector_4 translationVector){
+		Vector4 & matrix4::translate_matrix(Vector4 translationVector){
 
-			matrix_4 mtx4; 
+			matrix4 mtx4; 
 
 			mtx4 = get_translation_matrix(translationVector);
 
@@ -609,9 +609,9 @@ namespace engine
 		}
 
 
-		matrix_4 matrix_4::invert_matrix(){
+		matrix4 matrix4::invert_matrix(){
 
-			matrix_4 invertMatrix = matrix_4();
+			matrix4 invertMatrix = matrix4();
 			double determinate;
 
 			invertMatrix[0] = mValues[5] * mValues[10] * mValues[15] -
@@ -750,6 +750,65 @@ namespace engine
 			invertMatrix[15] = invertMatrix[15] * determinate;
 
 			return invertMatrix;
+
+		}
+		void matrix4::ortho_matrix(const float &pMinimumXAxis, const float &pMaximumXAxis, const float &pMinimumYAxis,
+			const float &pMaximumYAxis, const float &pMinimumZAxis, const float &pMaximumZAxis)
+		{
+			identity();
+
+			float inverseXAxesDifference = 1 / (pMaximumXAxis - pMinimumXAxis);
+			float inverseYAxesDifference = 1 / (pMaximumYAxis - pMinimumYAxis);
+			float inverseZAxesDifference = 1 / (pMaximumZAxis - pMinimumZAxis);
+
+			mValues[0] = 2.0f * inverseXAxesDifference;
+			mValues[5] = 2.0f * inverseYAxesDifference;
+			mValues[10] = -2.0f * inverseZAxesDifference;
+			mValues[12] = -(pMaximumXAxis + pMinimumXAxis) * inverseXAxesDifference;
+			mValues[13] = -(pMaximumYAxis + pMinimumYAxis) * inverseYAxesDifference;
+			mValues[14] = -(pMaximumZAxis + pMinimumZAxis) * inverseZAxesDifference;
+		}
+		math_utilities math;
+
+		void matrix4::perspective_matrix(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane)
+		{
+
+			float scale = 1 / (tan(pFieldOfView * 0.5) * math.degrees_to_radians(1));
+
+			float inverseClippingPlaneDifference = 1 / (pFarClippingPlane - pNearClippingPlane);
+
+			mValues[0] = scale;
+			mValues[5] = scale;
+			mValues[10] = -pFarClippingPlane * inverseClippingPlaneDifference;
+			mValues[11] = -1;
+			mValues[14] = -pFarClippingPlane * pNearClippingPlane * inverseClippingPlaneDifference;
+			mValues[15] = 0;
+
+		}
+		
+		void matrix4::look_at(vector3 pLookingPosition, vector3 pTargetPosition)
+		{
+			vector3 forward(pLookingPosition - pTargetPosition);
+			forward.Normalize();
+			vector3 tmp(0.0f, 1.0f, 0.0f);
+			tmp.Normalize();
+			vector3 right;
+			right = tmp.cross_product(tmp, forward);
+			vector3 up;
+			up = tmp.cross_product(forward, right);
+
+			mValues[0] = right.x;
+			mValues[1] = up.x;
+			mValues[2] = forward.x;
+			mValues[3] = pLookingPosition.y;
+			mValues[4] = right.y;
+			mValues[5] = up.y;
+			mValues[6] = forward.y;
+			mValues[7] = pLookingPosition.y;
+			mValues[8] = right.z;
+			mValues[9] = up.z;
+			mValues[10] = forward.z;
+			mValues[11] = pLookingPosition.z;
 
 		}
 

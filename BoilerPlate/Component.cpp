@@ -1,12 +1,19 @@
-#include "Component.hpp"
+#include "component.hpp"
 
-
-
-Component::Component()
+namespace engine
 {
-}
+	namespace core
+	{
+		component::component(const std::string& name){
+			mName = name;
+		}
 
+		component::~component(){
+			mOwner = nullptr;
+		}
 
-Component::~Component()
-{
+		void component::update(double deltaTime){
+			i_update::update(deltaTime);
+		}
+	}
 }

@@ -5,7 +5,7 @@
 #include "renderer.hpp"
 
 
-namespace Engine
+namespace engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;

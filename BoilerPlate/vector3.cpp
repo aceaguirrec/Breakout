@@ -1,13 +1,13 @@
-#include "vector_2.hpp"
-#include "vector_3.hpp"
+#include "vector3.hpp"
 #include <cmath>
+
 namespace engine {
 
 	namespace math {
 
-		vector_3 vector_3::Origin = vector_3();
+		vector3 vector3::Origin = vector3();
 
-		vector_3::vector_3()
+		vector3::vector3()
 
 			: x(0.0f)
 			, y(0.0f)
@@ -15,7 +15,7 @@ namespace engine {
 			, length(0.0f)
 		{}
 
-		vector_3::vector_3(float _x, float _y, float _z)
+		vector3::vector3(float _x, float _y, float _z)
 
 			: x(_x)
 			, y(_y)
@@ -26,7 +26,7 @@ namespace engine {
 			Length();
 		}
 
-		vector_3::vector_3(float _uniform)
+		vector3::vector3(float _uniform)
 
 			: x(_uniform)
 			, y(_uniform)
@@ -37,7 +37,7 @@ namespace engine {
 			Length();
 		}
 
-		vector_3::vector_3(const vector_2& v2)
+		vector3::vector3(const vector2& v2)
 
 			: x(v2.x)
 			, y(v2.y)
@@ -48,17 +48,17 @@ namespace engine {
 			Length();
 		}
 
-		float vector_3::Length() const {
+		float vector3::Length() const {
 
 			return std::sqrt(x * x + y * y + z * z);
 		}
 
-		float vector_3::SquaredLength() const {
+		float vector3::SquaredLength() const {
 
 			return x * x + y * y + z * z;
 		}
 
-		float vector_3::Normalize() {
+		float vector3::Normalize() {
 
 			// Calculate length
 			Length();
@@ -70,9 +70,17 @@ namespace engine {
 
 			return length;
 		}
+		vector3 vector3::cross_product(const vector3& pLeftSide, const vector3& pRightSide)
+		{
+			vector3 resultVector;
+			resultVector.x = pLeftSide.y * pRightSide.z - pLeftSide.z * pRightSide.y;
+			resultVector.y = pLeftSide.z * pRightSide.x - pLeftSide.x * pRightSide.z;
+			resultVector.z = pLeftSide.x * pRightSide.y - pLeftSide.y * pRightSide.x;
 
+			return resultVector;
+		}
 
-		vector_3& vector_3::operator=(const vector_3& rhs) {
+		vector3& vector3::operator=(const vector3& rhs) {
 
 			// Prevent self assignment
 			if (this == &rhs) return *this;
@@ -84,7 +92,7 @@ namespace engine {
 			return *this;
 		}
 
-		vector_3& vector_3::operator+=(const vector_3& rhs) {
+		vector3& vector3::operator+=(const vector3& rhs) {
 
 			x = x + rhs.x;
 			y = y + rhs.y;
@@ -93,7 +101,7 @@ namespace engine {
 			return *this;
 		}
 
-		vector_3& vector_3::operator-=(const vector_3& rhs) {
+		vector3& vector3::operator-=(const vector3& rhs) {
 
 			x = x - rhs.x;
 			y = y - rhs.y;
@@ -102,7 +110,7 @@ namespace engine {
 			return *this;
 		}
 
-		vector_3& vector_3::operator*=(const vector_3& rhs) {
+		vector3& vector3::operator*=(const vector3& rhs) {
 
 			x = x * rhs.x;
 			y = y * rhs.y;
@@ -111,7 +119,7 @@ namespace engine {
 			return *this;
 		}
 
-		vector_3& vector_3::operator/=(const vector_3& rhs) {
+		vector3& vector3::operator/=(const vector3& rhs) {
 
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
@@ -125,43 +133,43 @@ namespace engine {
 		}
 
 
-		vector_3 vector_3::operator+(const vector_3& rhs) const {
+		vector3 vector3::operator+(const vector3& rhs) const {
 
-			return vector_3(
+			return vector3(
 				x + rhs.x,
 				y + rhs.y,
 				z + rhs.z);
 		}
 
-		vector_3 vector_3::operator-(const vector_3& rhs) const {
+		vector3 vector3::operator-(const vector3& rhs) const {
 
-			return vector_3(
+			return vector3(
 				x - rhs.x,
 				y - rhs.y,
 				z - rhs.z);
 		}
 
-		vector_3 vector_3::operator*(const vector_3& rhs) const {
+		vector3 vector3::operator*(const vector3& rhs) const {
 
-			return vector_3(
+			return vector3(
 				x * rhs.x,
 				y * rhs.y,
 				z * rhs.z);
 		}
 
-		vector_3 vector_3::operator/(const vector_3& rhs) const {
+		vector3 vector3::operator/(const vector3& rhs) const {
 
 			if (rhs.x == 0) throw "Division by zero is not defined!";
 			if (rhs.y == 0) throw "Division by zero is not defined!";
 			if (rhs.z == 0) throw "Division by zero is not defined!";
 
-			return vector_3(
+			return vector3(
 				x / rhs.x,
 				y / rhs.y,
 				z / rhs.z);
 		}
 
-		bool vector_3::operator==(const vector_3& rhs) const {
+		bool vector3::operator==(const vector3& rhs) const {
 
 			return
 				x == rhs.x &&
@@ -169,7 +177,7 @@ namespace engine {
 				z == rhs.z;
 		}
 
-		bool vector_3::operator!=(const vector_3& rhs) const {
+		bool vector3::operator!=(const vector3& rhs) const {
 
 			return
 				x != rhs.x ||
@@ -177,17 +185,17 @@ namespace engine {
 				z != rhs.z;
 		}
 
-		vector_3 operator*(float scaleUnit, const vector_3& rhs) {
+		vector3 operator*(float scaleUnit, const vector3& rhs) {
 
-			return vector_3(
+			return vector3(
 				scaleUnit * rhs.x,
 				scaleUnit * rhs.y,
 				scaleUnit * rhs.z);
 		}
 
-		vector_3 operator*(const vector_3& lhs, float scaleUnit) {
+		vector3 operator*(const vector3& lhs, float scaleUnit) {
 
-			return vector_3(
+			return vector3(
 				scaleUnit * lhs.x,
 				scaleUnit * lhs.y,
 				scaleUnit * lhs.z);

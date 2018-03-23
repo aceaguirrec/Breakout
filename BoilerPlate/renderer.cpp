@@ -1,14 +1,14 @@
 #include "renderer.hpp"
 
 
-namespace Engine {
+namespace engine {
 
 
 	float vertices[][3] =
 	{
 	// first triangle
 		0.5f,  0.5f, 0.0f,  // top right
-		0.5f, -0.5f, 0.0f,  // bottom right	
+		0.5f, -0.5f, 0.0f,  // bottom right
 		-0.5f,  0.5f, 0.0f, // top left 
 	// second triangle
 		 0.5f, -0.5f, 0.0f,  // bottom right
@@ -37,6 +37,9 @@ namespace Engine {
 	void renderer::initialize_program_id()
 	{
 		mProgramID = mShaderManager.LoadShaders("vertex.glsl", "frag.glsl");
+		textures gameBlock;
+		gameBlock.initialize("Game/assets/block.png");
+		mTextures[0] = gameBlock;
 	}
 
 	void renderer::load_textures(const char* texture_path[]){
@@ -51,9 +54,14 @@ namespace Engine {
 	void renderer::render(){
 
 		glUseProgram(mProgramID);
-		glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
+		
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, mTextures[0].get_texture());
+
+		glBindVertexArray(mVertexArrayObject);
 		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+		
 	}
 
 
@@ -89,14 +97,24 @@ namespace Engine {
 
 		glEnableVertexAttribArray(0);
 
+		
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
+
+		
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+		glEnableVertexAttribArray(2);
+
 		// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 
 		// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
+
+		glUniform1i(glGetUniformLocation(mProgramID, "test"), 0);
 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}

@@ -2,7 +2,7 @@
 #include "error_manager.hpp"
 
 
-namespace Engine {
+namespace engine {
 
 	int error_manager::displayError(std::string fileName, std::string fileLineNumber, 
 		std::string errorMessage, std::string rawErrorMessage){

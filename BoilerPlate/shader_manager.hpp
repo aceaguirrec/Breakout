@@ -8,7 +8,7 @@
 
 
 
-namespace Engine
+namespace engine
 {
 
 	struct shader_manager

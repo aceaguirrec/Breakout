@@ -5,10 +5,10 @@
 #include "stb_image.h"
 
 
-namespace Engine {
+namespace engine {
 
 
-	textures::textures(){}
+	textures::textures() {}
 
 
 	textures::textures(const char* texture_path) {
@@ -16,7 +16,7 @@ namespace Engine {
 		mTexture = load_textures(texture_path);
 	}
 
-	GLuint textures::load_textures(const char * texture_path){
+	GLuint textures::load_textures(const char * texture_path) {
 
 		unsigned int testTexture;
 
@@ -31,7 +31,7 @@ namespace Engine {
 
 		int numberOfChannels;
 		int width;
-		int height; 
+		int height;
 
 
 		//loads texture
@@ -61,9 +61,12 @@ namespace Engine {
 	}
 
 
+	void textures::initialize(const char* texture_path) {
+
+		mTexture = load_textures(texture_path);
 
 
 
 
-
+	}
 }

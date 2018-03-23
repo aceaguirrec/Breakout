@@ -1,32 +1,29 @@
 #pragma once
-#ifndef _UNIQUE_ID_HPP_
-#define _UNIQUE_ID_HPP_
+#ifndef _I_UPDATE_HPP_
+#define _I_UPDATE_HPP_
 
-namespace engine
+namespace engine 
 {
-	namespace core
+	namespace core 
 	{
-		class unique_id
-		{
+		class i_update {
 		public:
 			/* =============================================================
 			* CTOR
 			* ============================================================= */
-			unique_id();
-			unique_id(const unique_id& orig);
+			i_update() : m_nUpdates(0) {}
+			virtual ~i_update() = default;
 
 			/* =============================================================
-			* OPERATORS
+			* PUBLIC FUNCTIONS
 			* ============================================================= */
-			unique_id& operator=(const unique_id& orig);
-
+			void virtual update(double deltaTime) { m_nUpdates++; };
+		protected:
 			/* =============================================================
 			* MEMBERS
 			* ============================================================= */
-			int id;
-		protected:
-			static int nextID;
+			int	m_nUpdates;
 		};
 	}
 }
-#endif // !_UNIQUEID_HPP_
+#endif // !_IUPDATE_HPP_

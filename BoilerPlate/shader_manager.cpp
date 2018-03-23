@@ -8,9 +8,9 @@
 #include<algorithm>
 #include<sstream>
 
-Engine::error_manager errorManager;
+engine::error_manager errorManager;
 
-namespace Engine
+namespace engine
 {
 
 
@@ -55,11 +55,11 @@ namespace Engine
 		}
 
 		GLint Result = GL_FALSE;
-		int InfoLogLength;
+		int InfoLogLength = 0;
 
 
 		// Compile Vertex Shader
-		printf("Compiling shader : %s\n", pVertexFilePath);
+		
 		char const * VertexSourcePointer = VertexShaderCode.c_str();
 		glShaderSource(VertexShaderID, 1, &VertexSourcePointer, NULL);
 		glCompileShader(VertexShaderID);
@@ -71,13 +71,12 @@ namespace Engine
 			std::vector<char> VertexShaderErrorMessage(InfoLogLength + 1);
 			glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
 			errorManager.displayError(pVertexFilePath, "69", &VertexShaderErrorMessage[0], " ");
-			//printf("%s\n", &VertexShaderErrorMessage[0]);
+			
 		}
 
 
 
 		// Compile Fragment Shader
-		printf("Compiling shader : %s\n", pFragmentFilePath);
 		char const * FragmentSourcePointer = FragmentShaderCode.c_str();
 		glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer, NULL);
 		glCompileShader(FragmentShaderID);
@@ -89,13 +88,12 @@ namespace Engine
 			std::vector<char> FragmentShaderErrorMessage(InfoLogLength + 1);
 			glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
 			errorManager.displayError(pFragmentFilePath, "87", &FragmentShaderErrorMessage[0], " ");
-			//printf("%s\n", &FragmentShaderErrorMessage[0]);
+			
 		}
 
 
 
 		// Link the program
-		printf("Linking program\n");
 		GLuint ProgramID = glCreateProgram();
 		glAttachShader(ProgramID, VertexShaderID);
 		glAttachShader(ProgramID, FragmentShaderID);
@@ -108,7 +106,7 @@ namespace Engine
 			std::vector<char> ProgramErrorMessage(InfoLogLength + 1);
 			glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
 			errorManager.displayError(pVertexFilePath, "106", &ProgramErrorMessage[0], " ");
-			//printf("%s\n", &ProgramErrorMessage[0]);
+			
 		}
 
 
