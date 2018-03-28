@@ -35,7 +35,7 @@ namespace engine {
 	{
 		mProgramID = mShaderManager.LoadShaders("vertex.glsl", "frag.glsl");
 		textures test;
-		test.load_textures("game/assets/block.png");
+		test.load_textures("game/assets/block_solid.png");
 
 		mTextures[0] = test;
 	}
@@ -107,7 +107,7 @@ namespace engine {
 		glUseProgram(mProgramID);
 
 		// Remember this needs to be set after the program is activated
-		glUniform1i(glGetUniformLocation(mProgramID, "block"), 0);
+		glUniform1i(glGetUniformLocation(mProgramID, "texture1"), 0);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
