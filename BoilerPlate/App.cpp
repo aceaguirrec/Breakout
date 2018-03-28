@@ -17,7 +17,7 @@ namespace engine
 		, m_width(width)
 		, m_height(height)
 		, m_nUpdates(0)
-		, m_timer(new TimeManager)
+		, m_timer(new time_manager)
 		, m_mainWindow(nullptr)
 	{
 		m_state = GameState::UNINITIALIZED;

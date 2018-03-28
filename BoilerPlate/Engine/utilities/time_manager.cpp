@@ -1,5 +1,5 @@
 // Space Combat
-#include "TimeManager.hpp"
+#include "time_manager.hpp"
 
 // STL
 //
@@ -7,7 +7,7 @@
 
 namespace engine
 {
-	TimeManager::TimeManager()
+	time_manager::time_manager()
 	{
 #ifdef WIN32
 		::QueryPerformanceFrequency(&m_frequency);
@@ -22,10 +22,10 @@ namespace engine
 		m_endTimeInMicroSeconds = 0;
 	}
 
-	TimeManager::~TimeManager()
+	time_manager::~time_manager()
 	{}
 
-	void TimeManager::Start()
+	void time_manager::Start()
 	{
 		m_stopped = 0; // reset stop flag
 #ifdef WIN32
@@ -35,7 +35,7 @@ namespace engine
 #endif       
 	}
 
-	void TimeManager::Stop()
+	void time_manager::Stop()
 	{
 		m_stopped = 1; // set timer stopped flag
 #ifdef WIN32
@@ -45,7 +45,7 @@ namespace engine
 #endif
 	}
 
-	double TimeManager::GetElapsedTimeInMicroseconds()
+	double time_manager::GetElapsedTimeInMicroseconds()
 	{
 #ifdef WIN32
 		if (!m_stopped)
@@ -68,17 +68,17 @@ namespace engine
 		return m_endTimeInMicroSeconds - m_startTimeInMicroSeconds;
 	}
 
-	double TimeManager::GetElapsedTimeInMilliseconds()
+	double time_manager::GetElapsedTimeInMilliseconds()
 	{
 		return this->GetElapsedTimeInMicroseconds() * 0.001;
 	}
 
-	double TimeManager::GetElapsedTimeInSeconds()
+	double time_manager::GetElapsedTimeInSeconds()
 	{
 		return this->GetElapsedTimeInMicroseconds() * 0.000001;
 	}
 
-	double TimeManager::GetElapsedTime()
+	double time_manager::GetElapsedTime()
 	{
 		return this->GetElapsedTimeInSeconds();
 	}

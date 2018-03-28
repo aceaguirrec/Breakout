@@ -1,8 +1,10 @@
 #include "input_manager.hpp"
 
-namespace engine 
-{
+namespace engine {
+
 	input_manager::input_manager(){
+
 		mD = false;
+
 	}
 }
