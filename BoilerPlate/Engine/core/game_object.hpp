@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _GAMEOBJECT_HPP_
-#define _GAMEOBJECT_HPP_
+#ifndef GAMEOBJECT_HPP
+#define GAMEOBJECT_HPP
 
 #include <vector>
 
@@ -70,4 +70,4 @@ namespace engine
 		};
 	}
 }
-#endif // !_IUPDATE_HPP_
+#endif // !GAMEOBJECT_HPP
