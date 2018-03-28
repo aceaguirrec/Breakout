@@ -33,7 +33,7 @@ namespace Engine {
 		int width;
 		int height; 
 
-
+		stbi_set_flip_vertically_on_load(true);
 		//loads texture
 		unsigned char* data = stbi_load(texture_path, &width, &height, &numberOfChannels, 0);
 
@@ -60,7 +60,10 @@ namespace Engine {
 		return mTexture;
 	}
 
-
+	void textures::initialize_texture(const char* texture_path)
+	{
+		mTexture = load_textures(texture_path);
+	}
 
 
 

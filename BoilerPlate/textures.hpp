@@ -18,6 +18,7 @@ namespace Engine {
 
 		GLuint load_textures(const char* texture_path);
 		GLuint get_texture();
+		void initialize_texture(const char* texture_path);
 
 	private:
 
