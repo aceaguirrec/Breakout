@@ -111,4 +111,12 @@
     <None Include="vertex.glsl" />
     <None Include="frag.glsl" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Game\assets\block.png" />
+    <Image Include="Game\assets\block_solid.png" />
+    <Image Include="Game\assets\ball.png" />
+    <Image Include="Game\assets\background.jpg" />
+    <Image Include="Game\assets\paddle.png" />
+    <Image Include="Game\assets\test.png" />
+  </ItemGroup>
 </Project>

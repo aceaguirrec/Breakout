@@ -34,12 +34,15 @@ namespace engine {
 	}
 
 
-	void renderer::initialize_program_id()
-	{
+	void renderer::initialize_program_id(){
+
 		mProgramID = mShaderManager.LoadShaders("vertex.glsl", "frag.glsl");
 		textures gameBlock;
 		gameBlock.initialize("Game/assets/block.png");
 		mTextures[0] = gameBlock;
+
+		
+
 	}
 
 	void renderer::load_textures(const char* texture_path[]){
@@ -65,8 +68,8 @@ namespace engine {
 	}
 
 
-	void renderer::load_vertices()
-	{
+	void renderer::load_vertices(){
+
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
 
@@ -120,16 +123,17 @@ namespace engine {
 	}
 
 
-	void renderer::toggle_polygon_mode()
-	{
-		if (mPolygonMode)
-		{
+	void renderer::toggle_polygon_mode(){
+
+		if (mPolygonMode) {
+
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 			mPolygonMode = false;
 		}
-		else
-		{
+
+		else{
+			 
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 			mPolygonMode = true;
 		}
