@@ -77,7 +77,6 @@
     <ClInclude Include="Engine\core\game_object.hpp">
       <Filter>Engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\core\block.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
