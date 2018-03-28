@@ -2,6 +2,15 @@
 #ifndef _MATHUTILITIES_H_
 #define _MATHUTILITIES_H_
 
+#include <math.h>
+#include <cmath>
+#include <cstdlib>
+#include "stdarg.h"
+#include <vector>
+#include <time.h> 
+#include <stdlib.h> 
+
+
 namespace Engine
 {
 	namespace Math

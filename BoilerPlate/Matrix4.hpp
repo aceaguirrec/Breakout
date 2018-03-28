@@ -38,7 +38,6 @@ namespace Engine
 			int *	 get_angles(void);
 			matrix4	 get_translation_matrix(Vector4 translationVector);
 			Vector4& translate_matrix(Vector4 translationVector);
-			bool invert_matrix(const double member[16], double indexOut[16]);
 			void	 rotate_matrix(float , float);
 			matrix4	 rotate_on_x(float);
 			matrix4	 rotate_on_y(float);

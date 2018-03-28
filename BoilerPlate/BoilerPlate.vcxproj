@@ -172,30 +172,46 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="component.cpp" />
     <ClCompile Include="error_manager.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="input_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtilities.cpp" />
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="resource_manager.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="shader_manager.cpp" />
+    <ClCompile Include="sprite.cpp" />
     <ClCompile Include="textures.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="unique_id.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
+    <ClInclude Include="component.hpp" />
     <ClInclude Include="error_manager.hpp" />
+    <ClInclude Include="game.hpp" />
+    <ClInclude Include="game_object.hpp" />
+    <ClInclude Include="input_manager.hpp" />
+    <ClInclude Include="i_render.hpp" />
+    <ClInclude Include="i_update.hpp" />
     <ClInclude Include="MathUtilities.hpp" />
     <ClInclude Include="Matrix4.hpp" />
     <ClInclude Include="renderer.hpp" />
+    <ClInclude Include="resource_manager.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="shader_manager.hpp" />
+    <ClInclude Include="sprite.hpp" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="textures.hpp" />
     <ClInclude Include="TimeManager.hpp" />
+    <ClInclude Include="unique_id.hpp" />
     <ClInclude Include="Vector2.hpp" />
     <ClInclude Include="Vector3.hpp" />
     <ClInclude Include="Vector4.hpp" />
@@ -203,6 +219,13 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   <ItemGroup>
     <None Include="frag.glsl" />
     <None Include="vertex.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="game\assets\background.jpg" />
+    <Image Include="game\assets\ball.png" />
+    <Image Include="game\assets\block.png" />
+    <Image Include="game\assets\block_solid.png" />
+    <Image Include="game\assets\paddle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
