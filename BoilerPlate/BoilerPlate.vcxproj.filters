@@ -32,6 +32,12 @@
     <ClCompile Include="Engine\core\game_object.cpp">
       <Filter>Engine\core</Filter>
     </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="ball.cpp">
+      <Filter>Engine\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -75,6 +81,15 @@
     <ClInclude Include="Engine\utilities\time_manager.hpp" />
     <ClInclude Include="Engine\utilities\stb_image.h" />
     <ClInclude Include="Engine\core\game_object.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="block.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="object_vertex.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="ball.hpp">
       <Filter>Engine\core</Filter>
     </ClInclude>
   </ItemGroup>

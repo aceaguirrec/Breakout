@@ -172,6 +172,8 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="ball.cpp" />
+    <ClCompile Include="block.cpp" />
     <ClCompile Include="Engine\core\component.cpp" />
     <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="game.cpp" />
@@ -193,6 +195,8 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
+    <ClInclude Include="ball.hpp" />
+    <ClInclude Include="block.hpp" />
     <ClInclude Include="Engine\core\component.hpp" />
     <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="game.hpp" />
@@ -202,6 +206,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="Engine\core\i_update.hpp" />
     <ClInclude Include="math_utilities.hpp" />
     <ClInclude Include="matrix4.hpp" />
+    <ClInclude Include="object_vertex.hpp" />
     <ClInclude Include="renderer.hpp" />
     <ClInclude Include="resource_manager.cpp" />
     <ClInclude Include="resource_manager.hpp" />
