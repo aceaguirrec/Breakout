@@ -1,161 +1,262 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="SDLEvent.cpp" />
-    <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="component.cpp">
-      <Filter>Engine\core</Filter>
+    <ClCompile Include="Engine\core\game_object.cpp">
+      <Filter>Breakout\Engine\core</Filter>
     </ClCompile>
-    <ClCompile Include="game_object.cpp">
-      <Filter>Engine\core</Filter>
+    <ClCompile Include="Engine\utilities\time_manager.cpp">
+      <Filter>Breakout\Engine\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLEvent.cpp">
+      <Filter>Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\component.cpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\component_model_matrix.cpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\component_movement.cpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\component_position.cpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\component_vertices.cpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\math\math_utilities.cpp">
+      <Filter>Breakout\Engine\math\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\math\matrix4.cpp">
+      <Filter>Breakout\Engine\math\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\math\Vector2.cpp">
+      <Filter>Breakout\Engine\math\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\math\vector3.cpp">
+      <Filter>Breakout\Engine\math\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\math\Vector4.cpp">
+      <Filter>Breakout\Engine\math\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\input_manger.cpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\renderer.cpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\shader_manager.cpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\core\textures.cpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="paddle.cpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="solid_block.cpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\objects\ball.cpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\objects\block.cpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
     </ClCompile>
     <ClCompile Include="unique_id.cpp">
-      <Filter>Engine\core</Filter>
+      <Filter>Breakout\Engine\core</Filter>
     </ClCompile>
-    <ClCompile Include="error_manager.cpp">
-      <Filter>Engine\Source files</Filter>
+    <ClCompile Include="Game\game.cpp">
+      <Filter>Breakout\Engine\shaders\Game</Filter>
     </ClCompile>
-    <ClCompile Include="input_manager.cpp">
-      <Filter>Engine\Source files</Filter>
+    <ClCompile Include="game_level.cpp">
+      <Filter>Breakout\Engine\shaders\Game</Filter>
     </ClCompile>
-    <ClCompile Include="resource_manager.cpp">
-      <Filter>Engine\Source files</Filter>
+    <ClCompile Include="Engine\utilities\error_manager.cpp">
+      <Filter>Breakout\Engine\utils</Filter>
     </ClCompile>
-    <ClCompile Include="sprite.cpp">
-      <Filter>Engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="MathUtilities.cpp">
-      <Filter>Engine\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix4.cpp">
-      <Filter>Engine\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>Engine\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3.cpp">
-      <Filter>Engine\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector4.cpp">
-      <Filter>Engine\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="renderer.cpp">
-      <Filter>Engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="shader_manager.cpp">
-      <Filter>Engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="textures.cpp">
-      <Filter>Engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Engine\Source files</Filter>
+    <ClCompile Include="Engine\core\component_object_type.cpp">
+      <Filter>Breakout\Engine\core\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.hpp" />
-    <ClInclude Include="SDLEvent.hpp" />
-    <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="component.hpp">
-      <Filter>Engine\core</Filter>
+    <ClInclude Include="resource_manager.hpp">
+      <Filter>Breakout\Engine\math\Header files</Filter>
     </ClInclude>
-    <ClInclude Include="game_object.hpp">
-      <Filter>Engine\core</Filter>
+    <ClInclude Include="Engine\core\i_render.hpp">
+      <Filter>Breakout\Engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="i_render.hpp">
-      <Filter>Engine\core</Filter>
+    <ClInclude Include="Engine\core\i_update.hpp">
+      <Filter>Breakout\Engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="i_update.hpp">
-      <Filter>Engine\core</Filter>
+    <ClInclude Include="Engine\core\game_object.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="object_vertex.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\utilities\time_manager.hpp">
+      <Filter>Breakout\Engine\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\utilities\stb_image.h">
+      <Filter>Breakout\Engine\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="App.hpp">
+      <Filter>Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLEvent.hpp">
+      <Filter>Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\component.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\component_model_matrix.hpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\component_movement.hpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\component_position.hpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\component_vertices.hpp">
+      <Filter>Breakout\Engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\math\math_utilities.hpp">
+      <Filter>Breakout\Engine\math\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\math\matrix4.hpp">
+      <Filter>Breakout\Engine\math\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\math\Vector2.hpp">
+      <Filter>Breakout\Engine\math\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\math\vector3.hpp">
+      <Filter>Breakout\Engine\math\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\math\Vector4.hpp">
+      <Filter>Breakout\Engine\math\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\include_components.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\input_manager.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\renderer.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\shader_manager.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\core\textures.hpp">
+      <Filter>Breakout\Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="paddle.hpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="solid_block.hpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\objects\ball.hpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\objects\block.hpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\objects\include_game_objects.hpp">
+      <Filter>Breakout\Engine\shaders\Game\objects</Filter>
     </ClInclude>
     <ClInclude Include="unique_id.hpp">
-      <Filter>Engine\core</Filter>
+      <Filter>Breakout\Engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="error_manager.hpp">
-      <Filter>Engine\Header files</Filter>
+    <ClInclude Include="Game\game.hpp">
+      <Filter>Breakout\Engine\shaders\Game</Filter>
     </ClInclude>
-    <ClInclude Include="input_manager.hpp">
-      <Filter>Engine\Header files</Filter>
+    <ClInclude Include="game_level.hpp">
+      <Filter>Breakout\Engine\shaders\Game</Filter>
     </ClInclude>
-    <ClInclude Include="resource_manager.hpp">
-      <Filter>Engine\Header files</Filter>
+    <ClInclude Include="Engine\utilities\error_manager.hpp">
+      <Filter>Breakout\Engine\utils</Filter>
     </ClInclude>
-    <ClInclude Include="sprite.hpp">
-      <Filter>Engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="MathUtilities.hpp">
-      <Filter>Engine\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix4.hpp">
-      <Filter>Engine\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.hpp">
-      <Filter>Engine\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.hpp">
-      <Filter>Engine\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4.hpp">
-      <Filter>Engine\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="renderer.hpp">
-      <Filter>Engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="shader_manager.hpp">
-      <Filter>Engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="textures.hpp">
-      <Filter>Engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="game.hpp">
-      <Filter>Engine\Header files</Filter>
+    <ClInclude Include="Engine\core\component_object_type.hpp">
+      <Filter>Breakout\Engine\core\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Engine">
+    <Filter Include="Breakout">
+      <UniqueIdentifier>{8a704572-93ac-495e-b894-6658dcf25097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Breakout\Engine">
       <UniqueIdentifier>{6f9fb37f-e47b-46c3-8209-dbf486018555}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Source files">
-      <UniqueIdentifier>{0a3ec513-922c-4b14-83e3-98e1934fea74}</UniqueIdentifier>
+    <Filter Include="Breakout\Engine\core">
+      <UniqueIdentifier>{e05564ef-a191-4316-8b84-18b1f7e8491c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Header files">
+    <Filter Include="Breakout\Engine\shaders">
+      <UniqueIdentifier>{50d8f853-15bb-4875-8973-d3c112c03e0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Breakout\Engine\utils">
+      <UniqueIdentifier>{db0a8a85-050b-4c2b-9454-cfa7fb4c5a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Breakout\Engine\math">
+      <UniqueIdentifier>{a0252f78-30f2-4484-9365-ff024bd6401a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Breakout\Engine\math\Header files">
       <UniqueIdentifier>{da8cc683-e66e-46b9-be58-7d0e16e23f76}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\core">
-      <UniqueIdentifier>{ca262ba1-b55f-446b-b7ad-da93bb5f2862}</UniqueIdentifier>
+    <Filter Include="Breakout\Engine\math\source files">
+      <UniqueIdentifier>{c193797c-177c-4c39-9aec-2d1d5116b819}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Math">
-      <UniqueIdentifier>{573a6cb3-7e2f-48c9-babc-737f579ad9af}</UniqueIdentifier>
+    <Filter Include="Breakout\Engine\core\components">
+      <UniqueIdentifier>{672c2f9b-d4ce-4d17-a4b4-5543f5648511}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{da975f82-97ef-4de0-8aef-17ef65a9260b}</UniqueIdentifier>
+    <Filter Include="Breakout\Engine\shaders\Game">
+      <UniqueIdentifier>{723082c3-52ee-4a80-a1fb-5a3ee3fdb21a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\assets">
-      <UniqueIdentifier>{d4b4ab1f-c784-4242-8e75-6f09f3637541}</UniqueIdentifier>
+    <Filter Include="Breakout\Engine\shaders\Game\assets">
+      <UniqueIdentifier>{6d59188c-8925-4211-a0e6-9c267055dcd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Breakout\Engine\shaders\Game\lvls">
+      <UniqueIdentifier>{1d13abeb-0d13-42b2-8834-0e8462aab80b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Breakout\Engine\shaders\Game\objects">
+      <UniqueIdentifier>{da5d4b31-177c-4072-bdc5-391e3f0f4165}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vertex.glsl" />
-    <None Include="frag.glsl" />
+    <Image Include="Game\assets\background.jpg">
+      <Filter>Breakout\Engine\shaders\Game\assets</Filter>
+    </Image>
+    <Image Include="Game\assets\ball.png">
+      <Filter>Breakout\Engine\shaders\Game\assets</Filter>
+    </Image>
+    <Image Include="Game\assets\block.png">
+      <Filter>Breakout\Engine\shaders\Game\assets</Filter>
+    </Image>
+    <Image Include="Game\assets\block_solid.png">
+      <Filter>Breakout\Engine\shaders\Game\assets</Filter>
+    </Image>
+    <Image Include="Game\assets\paddle.png">
+      <Filter>Breakout\Engine\shaders\Game\assets</Filter>
+    </Image>
+    <Image Include="Game\assets\test.png">
+      <Filter>Breakout\Engine\shaders\Game\assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="game\assets\ball.png">
-      <Filter>Game\assets</Filter>
-    </Image>
-    <Image Include="game\assets\background.jpg">
-      <Filter>Game\assets</Filter>
-    </Image>
-    <Image Include="game\assets\block.png">
-      <Filter>Game\assets</Filter>
-    </Image>
-    <Image Include="game\assets\block_solid.png">
-      <Filter>Game\assets</Filter>
-    </Image>
-    <Image Include="game\assets\paddle.png">
-      <Filter>Game\assets</Filter>
-    </Image>
+    <None Include="Engine\shaders\frag.glsl">
+      <Filter>Breakout\Engine\shaders</Filter>
+    </None>
+    <None Include="Engine\shaders\vertex.glsl">
+      <Filter>Breakout\Engine\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

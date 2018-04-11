@@ -2,10 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
-#include "renderer.hpp"
-
-
-namespace Engine
+namespace engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
@@ -17,7 +14,7 @@ namespace Engine
 		, m_width(width)
 		, m_height(height)
 		, m_nUpdates(0)
-		, m_timer(new TimeManager)
+		, m_timer(new time_manager)
 		, m_mainWindow(nullptr)
 	{
 		m_state = GameState::UNINITIALIZED;
@@ -40,8 +37,8 @@ namespace Engine
 
 		m_state = GameState::RUNNING;
 
-		appRenderer.initialize_program_id();
-		appRenderer.load_vertices();
+		m_game.execute();
+		m_game.update_window_size(m_width, m_height);
 
 		SDL_Event event;
 		while (m_state == GameState::RUNNING)
@@ -89,8 +86,14 @@ namespace Engine
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
 
-		case SDL_SCANCODE_D:
+		case SDL_SCANCODE_SPACE:
 			appRenderer.toggle_polygon_mode();
+			break;
+		case SDL_SCANCODE_A:
+			m_game.mInputManager.set_a(true);
+			break;
+		case SDL_SCANCODE_D:
+			m_game.mInputManager.set_d(true);
 			break;
 		}
 	}
@@ -101,6 +104,15 @@ namespace Engine
 		{
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
+			break;
+		case SDL_SCANCODE_SPACE:
+			m_game.mInputManager.set_space(false);
+			break;
+		case SDL_SCANCODE_A:
+			m_game.mInputManager.set_a(false);
+			break;
+		case SDL_SCANCODE_D:
+			m_game.mInputManager.set_d(false);
 			break;
 		default:
 			//DO NOTHING
@@ -114,6 +126,7 @@ namespace Engine
 
 		// Update code goes here
 		//
+		m_game.update();
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;
@@ -136,7 +149,7 @@ namespace Engine
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		appRenderer.render();
+		m_game.render();
 
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
@@ -243,7 +256,7 @@ namespace Engine
 		//
 		m_width = width;
 		m_height = height;
-
+		m_game.update_window_size(m_width, m_height);
 		SetupViewport();
 	}
 

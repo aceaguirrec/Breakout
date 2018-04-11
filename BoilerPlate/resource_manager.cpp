@@ -1,1 +1,1 @@
-#include "resource_manager.hpp"
+#pragma once
